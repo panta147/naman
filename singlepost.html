@@ -105,7 +105,7 @@
                         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">समाचार शीर्षक यहाँ राख्नुहोस् (Single Post)</h1>
                         <p class="text-gray-700 dark:text-gray-300 text-sm md:text-base">उपशीर्षक/सारांश — पाठकलाई सुरुमा नै सन्दर्भ दिने १–२ लाइन।</p>
                         <div class="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-3 flex-wrap">
-                            <span><i class="far fa-user mr-1"></i>सम्पादक</span>
+                            <a href="#author" class="font-semibold hover:opacity-80 inline-flex items-center"><i class="far fa-user mr-1"></i><span id="authorNameInline">सम्पादक</span></a>
                             <span>•</span>
                             <span><i class="far fa-clock mr-1"></i>Mar 18, 2026</span>
                             <span>•</span>
@@ -148,6 +148,33 @@
                         </button>
                         <span id="shareToast" class="hidden text-xs font-semibold text-green-600 dark:text-green-400">Copied!</span>
                     </div>
+
+                    <!-- Author Profile -->
+                    <section id="author" class="mt-10">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-base md:text-lg font-extrabold uppercase tracking-wide">Journalist Profile</h2>
+                        </div>
+                        <div class="bbc-divider mt-3"></div>
+                        <div class="mt-6 grid grid-cols-1 sm:grid-cols-[96px_1fr] gap-5 items-start">
+                            <div class="w-24 h-24 bg-gray-100 dark:bg-gray-800 overflow-hidden">
+                                <img class="w-24 h-24 object-cover" alt="Author profile picture placeholder" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='200'%20height='200'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20stop-color='%23111827'/%3E%3Cstop%20offset='1'%20stop-color='%2360a5fa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='200'%20height='200'%20fill='url(%23g)'/%3E%3Ctext%20x='50%25'%20y='52%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='18'%20fill='white'%20opacity='0.95'%3EAuthor%3C/text%3E%3C/svg%3E" loading="lazy" decoding="async">
+                            </div>
+                            <div>
+                                <div class="flex flex-wrap items-center gap-3">
+                                    <div class="text-xl font-extrabold" id="authorName">नमन रिपोर्टर</div>
+                                    <span class="text-xs font-bold px-2 py-1 bg-gray-100 dark:bg-gray-800" id="authorRole">Senior Journalist</span>
+                                </div>
+                                <p class="mt-2 text-sm md:text-base text-gray-700 dark:text-gray-300" id="authorBio">
+                                    राजनीति र सार्वजनिक नीतिमा केन्द्रित रिपोर्टिङ। ८+ वर्षको अनुभव, तथ्य-जाँच र सन्दर्भसहितको समाचार लेखनमा रुचि।
+                                </p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <a href="#" class="px-3 py-2 bg-gray-100 dark:bg-gray-800 text-sm font-semibold hover:opacity-80" aria-label="Author Facebook"><i class="fab fa-facebook-f mr-2"></i>Facebook</a>
+                                    <a href="#" class="px-3 py-2 bg-gray-100 dark:bg-gray-800 text-sm font-semibold hover:opacity-80" aria-label="Author X"><i class="fab fa-twitter mr-2"></i>X</a>
+                                    <a href="#" class="px-3 py-2 bg-gray-100 dark:bg-gray-800 text-sm font-semibold hover:opacity-80" aria-label="Author Email"><i class="fas fa-envelope mr-2"></i>Email</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
                     <!-- Recommended news -->
                     <section class="mt-12">
@@ -420,6 +447,11 @@
                     }
                 });
             }
+
+            // Keep inline author name in sync with profile (brand trust)
+            const authorInline = document.getElementById('authorNameInline');
+            const authorName = document.getElementById('authorName');
+            if (authorInline && authorName) authorInline.textContent = authorName.textContent;
 
             // Text-to-speech (Nepali if available, else default)
             let speaking = false;
