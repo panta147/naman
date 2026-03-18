@@ -30,6 +30,11 @@
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
 
+    <!-- Reading Progress Bar -->
+    <div id="readingProgressWrap" class="fixed top-0 left-0 right-0 z-[60] h-1 bg-transparent">
+        <div id="readingProgress" class="h-1 bg-red-600 w-0"></div>
+    </div>
+
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur border-b border-gray-200 dark:border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,6 +55,14 @@
                 </div>
 
                 <div class="flex items-center gap-2">
+                    <!-- Reader controls -->
+                    <div class="hidden md:flex items-center gap-1 bg-gray-100 dark:bg-gray-800 px-2 py-1">
+                        <button id="fontMinus" class="w-8 h-8 grid place-items-center hover:opacity-80" aria-label="Decrease font size">A-</button>
+                        <button id="fontPlus" class="w-8 h-8 grid place-items-center hover:opacity-80" aria-label="Increase font size">A+</button>
+                        <button id="bookmarkBtn" class="w-8 h-8 grid place-items-center hover:opacity-80" aria-label="Save article">
+                            <i id="bookmarkIcon" class="far fa-bookmark"></i>
+                        </button>
+                    </div>
                     <button id="themeToggle" class="w-10 h-10 rounded-full grid place-items-center hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Toggle theme">
                         <i id="themeIcon" class="fas fa-moon text-gray-700 dark:text-gray-300"></i>
                     </button>
@@ -284,6 +297,62 @@
                 `;
                 list.prepend(item);
                 form.reset();
+            });
+        })();
+
+        // Reading progress + reader controls (font size + bookmark)
+        (function () {
+            const progress = document.getElementById('readingProgress');
+            const article = document.querySelector('article');
+            const plus = document.getElementById('fontPlus');
+            const minus = document.getElementById('fontMinus');
+            const bookmarkBtn = document.getElementById('bookmarkBtn');
+            const bookmarkIcon = document.getElementById('bookmarkIcon');
+
+            // Progress
+            const onScroll = () => {
+                if (!progress || !article) return;
+                const rect = article.getBoundingClientRect();
+                const total = article.scrollHeight - window.innerHeight;
+                const scrolled = window.scrollY;
+                const pct = total > 0 ? Math.min(100, Math.max(0, (scrolled / total) * 100)) : 0;
+                progress.style.width = pct + '%';
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            // Font size (stored)
+            const key = 'reader_font_px';
+            const applyFont = (px) => {
+                const v = Math.max(15, Math.min(21, px));
+                document.documentElement.style.setProperty('--reader-font', v + 'px');
+                document.body.style.fontSize = `var(--reader-font)`;
+                localStorage.setItem(key, String(v));
+            };
+            const saved = parseInt(localStorage.getItem(key) || '17', 10);
+            applyFont(Number.isFinite(saved) ? saved : 17);
+            plus?.addEventListener('click', () => applyFont((parseInt(localStorage.getItem(key) || '17', 10) || 17) + 1));
+            minus?.addEventListener('click', () => applyFont((parseInt(localStorage.getItem(key) || '17', 10) || 17) - 1));
+
+            // Bookmark/save (stored)
+            const bKey = 'saved_articles';
+            const slug = window.location.pathname + '#singlepost';
+            const getSaved = () => new Set(JSON.parse(localStorage.getItem(bKey) || '[]'));
+            const setSaved = (set) => localStorage.setItem(bKey, JSON.stringify([...set]));
+            const updateBookmark = () => {
+                if (!bookmarkIcon) return;
+                const savedSet = getSaved();
+                const isSaved = savedSet.has(slug);
+                bookmarkIcon.classList.toggle('fas', isSaved);
+                bookmarkIcon.classList.toggle('far', !isSaved);
+            };
+            updateBookmark();
+            bookmarkBtn?.addEventListener('click', () => {
+                const savedSet = getSaved();
+                if (savedSet.has(slug)) savedSet.delete(slug);
+                else savedSet.add(slug);
+                setSaved(savedSet);
+                updateBookmark();
             });
         })();
 

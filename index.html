@@ -501,24 +501,7 @@
                             <h3 class="text-base md:text-lg font-semibold text-gray-900 dark:text-gray-100" lang="ne">
                                 ४ चैत २०८२, बुधवार
                             </h3>
-                        </div>
-                        
-                        <!-- Tithi -->
-                        <div class="flex items-center space-x-2">
-                            <i class="fas fa-moon text-purple-600 dark:text-purple-400 text-xs"></i>
-                            <p class="text-sm text-gray-700 dark:text-gray-300" lang="ne">
-                                चैत कृष्ण चतुर्दशी
-                            </p>
-                        </div>
-                        
-                        <!-- Panchang -->
-                        <div class="flex items-start space-x-2">
-                            <i class="fas fa-star text-yellow-600 dark:text-yellow-400 text-xs mt-1"></i>
-                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed" lang="ne">
-                                पञ्चाङ्ग: साध्य शकुनि शतभिषा
-                            </p>
-                        </div>
-                        
+                        </div>                        
                         <!-- Time -->
                         <div class="flex items-center space-x-2 pt-1 border-t border-gray-200 dark:border-gray-700">
                             <i class="fas fa-clock text-green-600 dark:text-green-400 text-sm"></i>
@@ -597,6 +580,30 @@
         </div>
     </section>
     
+    <!-- Breaking News Ticker -->
+    <section aria-label="Breaking News" class="bg-gray-50 dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-2 px-3 py-1 bg-red-600 text-white text-xs font-extrabold uppercase">
+                    <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                    Breaking
+                </span>
+                <div class="relative flex-1 overflow-hidden">
+                    <div id="breakingTicker" class="whitespace-nowrap will-change-transform">
+                        <a href="singlepost.html" class="text-sm font-semibold hover:opacity-80 mr-10">सरकारको नयाँ निर्णय: मुख्य बुँदाहरू यहाँ…</a>
+                        <a href="singlepost.html" class="text-sm font-semibold hover:opacity-80 mr-10">खेलकुद अपडेट: आजको प्रमुख खेल समाचार…</a>
+                        <a href="singlepost.html" class="text-sm font-semibold hover:opacity-80 mr-10">प्रविधि: नयाँ स्मार्टफोन/AI अपडेट…</a>
+                        <a href="singlepost.html" class="text-sm font-semibold hover:opacity-80 mr-10">अन्तर्राष्ट्रिय: विश्वका ताजा घटनाक्रम…</a>
+                    </div>
+                </div>
+                <button id="tickerToggle" class="hidden sm:inline-flex items-center gap-2 px-3 py-1 bg-gray-100 dark:bg-gray-800 text-xs font-bold hover:opacity-80" aria-label="Pause breaking news ticker">
+                    <i id="tickerIcon" class="fas fa-pause"></i>
+                    <span id="tickerText">Pause</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- Main Content Area -->
     <main class="pt-16 md:pt-20 min-h-screen pb-20" lang="ne">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
@@ -1259,6 +1266,11 @@
 
         </div>
     </main>
+
+    <!-- Back to Top -->
+    <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-gray-900 text-white shadow-lg hidden items-center justify-center hover:opacity-90 z-50" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
     
     <!-- Footer -->
     <footer class="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
@@ -1767,6 +1779,64 @@
             next.addEventListener('click', () => {
                 rail.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
             });
+        })();
+
+        // Breaking News Ticker (CSS-free lightweight marquee)
+        (function () {
+            const ticker = document.getElementById('breakingTicker');
+            const toggleBtn = document.getElementById('tickerToggle');
+            const icon = document.getElementById('tickerIcon');
+            const text = document.getElementById('tickerText');
+            if (!ticker) return;
+
+            // Duplicate content for seamless loop
+            ticker.innerHTML = ticker.innerHTML + ticker.innerHTML;
+
+            let x = 0;
+            let paused = false;
+            const speed = 0.6; // px per frame
+
+            const step = () => {
+                if (!paused) {
+                    x -= speed;
+                    const half = ticker.scrollWidth / 2;
+                    if (-x >= half) x = 0;
+                    ticker.style.transform = `translateX(${x}px)`;
+                }
+                requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+
+            // Pause on hover (desktop)
+            ticker.addEventListener('mouseenter', () => (paused = true));
+            ticker.addEventListener('mouseleave', () => (paused = false));
+
+            if (toggleBtn && icon && text) {
+                toggleBtn.addEventListener('click', () => {
+                    paused = !paused;
+                    icon.classList.toggle('fa-pause', !paused);
+                    icon.classList.toggle('fa-play', paused);
+                    text.textContent = paused ? 'Play' : 'Pause';
+                });
+            }
+        })();
+
+        // Back to Top button
+        (function () {
+            const btn = document.getElementById('backToTop');
+            if (!btn) return;
+            const onScroll = () => {
+                if (window.scrollY > 600) {
+                    btn.classList.remove('hidden');
+                    btn.classList.add('flex');
+                } else {
+                    btn.classList.add('hidden');
+                    btn.classList.remove('flex');
+                }
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+            btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
         })();
 
 
