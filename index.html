@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ne" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>नमन खबर - नेपाली समाचार, ताजा खबर, राजनीति, खेलकुद, प्रविधि | Namankhabar</title>
+    <meta name="title" content="नमन खबर - नेपाली समाचार, ताजा खबर, राजनीति, खेलकुद, प्रविधि | Namankhabar">
+    <meta name="description" content="नमन खबर - नेपालको विश्वसनीय समाचार स्रोत। ताजा खबर, राजनीति, खेलकुद, प्रविधि, मनोरञ्जन, व्यापार र अन्य समाचारहरू। Namankhabar - Nepal's trusted news source for latest news, politics, sports, technology, entertainment, and business.">
+    <meta name="keywords" content="नेपाली समाचार, नमन खबर, namankhabar, nepal news, nepali news, ताजा खबर, राजनीति, खेलकुद, प्रविधि, मनोरञ्जन, व्यापार, nepal politics, nepal sports, nepal technology">
+    <meta name="author" content="नमन खबर - Namankhabar">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Nepali, English">
+    <meta name="revisit-after" content="1 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://namankhabar.com/">
+    <meta property="og:title" content="नमन खबर - नेपाली समाचार | Namankhabar">
+    <meta property="og:description" content="नेपालको विश्वसनीय समाचार स्रोत - ताजा खबर, राजनीति, खेलकुद, प्रविधि र अन्य समाचारहरू">
+    <meta property="og:image" content="https://namankhabar.com/og-image.jpg">
+    <meta property="og:locale" content="ne_NP">
+    <meta property="og:site_name" content="नमन खबर">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://namankhabar.com/">
+    <meta property="twitter:title" content="नमन खबर - नेपाली समाचार | Namankhabar">
+    <meta property="twitter:description" content="नेपालको विश्वसनीय समाचार स्रोत - ताजा खबर, राजनीति, खेलकुद, प्रविधि र अन्य समाचारहरू">
+    <meta property="twitter:image" content="https://namankhabar.com/twitter-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://namankhabar.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Mukta Font (Most used for Nepali sites) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "NewsMediaOrganization",
+        "name": "नमन खबर",
+        "alternateName": "Namankhabar",
+        "url": "https://namankhabar.com",
+        "logo": "https://namankhabar.com/logo.png",
+        "description": "नेपालको विश्वसनीय समाचार स्रोत",
+        "sameAs": [
+            "https://www.facebook.com/namankhabar",
+            "https://www.twitter.com/namankhabar",
+            "https://www.instagram.com/namankhabar"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "availableLanguage": ["Nepali", "English"]
+        }
+    }
+    </script>
+    
+    <style>
+        * {
+            font-family: 'Mukta', sans-serif;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            @apply bg-gray-100 dark:bg-gray-800;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            @apply bg-gray-400 dark:bg-gray-500;
+        }
+        
+        /* Smooth transitions */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        /* Navbar backdrop blur effect */
+        .navbar-blur {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
+    
+    <script>
+        // Theme management
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+        })();
+    </script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+    
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 navbar-blur bg-white/90 dark:bg-gray-900/90 border-b border-gray-200 dark:border-gray-700 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                
+                <!-- Logo and Brand -->
+                <div class="flex items-center space-x-3 flex-shrink-0">
+                    <a href="/" class="flex items-center space-x-2 group">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105">
+                            <i class="fas fa-newspaper text-white text-lg md:text-xl"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                नमन खबर
+                            </span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400 hidden sm:block">
+                                Namankhabar
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation Links -->
+                <div class="hidden lg:flex items-center space-x-1 flex-1 justify-center">
+                    <a href="/" class="nav-link px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 active">
+                        <i class="fas fa-home mr-2"></i>गृहपृष्ठ
+                    </a>
+                    <a href="/category/politics" class="nav-link px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <i class="fas fa-landmark mr-2"></i>राजनीति
+                    </a>
+                    <a href="/category/sports" class="nav-link px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <i class="fas fa-futbol mr-2"></i>खेलकुद
+                    </a>
+                    <a href="/category/technology" class="nav-link px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <i class="fas fa-laptop-code mr-2"></i>प्रविधि
+                    </a>
+                    <a href="/category/entertainment" class="nav-link px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <i class="fas fa-film mr-2"></i>मनोरञ्जन
+                    </a>
+                    <div class="relative group">
+                        <button class="nav-link px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center">
+                            <i class="fas fa-ellipsis-h mr-2"></i>अन्य
+                            <i class="fas fa-chevron-down ml-2 text-xs transition-transform duration-200 group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2 z-50">
+                            <a href="/category/business" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 rounded-t-lg">
+                                <i class="fas fa-briefcase mr-2"></i>व्यापार
+                            </a>
+                            <a href="/category/health" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="fas fa-heartbeat mr-2"></i>स्वास्थ्य
+                            </a>
+                            <a href="/category/education" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="fas fa-graduation-cap mr-2"></i>शिक्षा
+                            </a>
+                            <a href="/category/international" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="fas fa-globe mr-2"></i>अन्तर्राष्ट्रिय
+                            </a>
+                            <a href="/category/lifestyle" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="fas fa-utensils mr-2"></i>जीवनशैली
+                            </a>
+                            <a href="/category/opinion" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="fas fa-comments mr-2"></i>विचार
+                            </a>
+                            <a href="/category/crime" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <i class="fas fa-gavel mr-2"></i>अपराध
+                            </a>
+                            <a href="/category/weather" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 rounded-b-lg">
+                                <i class="fas fa-cloud-sun mr-2"></i>मौसम
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Side Actions -->
+                <div class="flex items-center space-x-2 md:space-x-4">
+                    
+                    <!-- Search Button (Mobile) -->
+                    <button id="searchBtn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
+                        <i class="fas fa-search text-gray-600 dark:text-gray-300"></i>
+                    </button>
+                    
+                    <!-- Search Bar (Desktop) -->
+                    <div class="hidden lg:flex items-center">
+                        <div class="relative">
+                            <input 
+                                type="text" 
+                                placeholder="खोज्नुहोस्..." 
+                                class="w-64 pl-10 pr-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            >
+                            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Theme Toggle -->
+                    <button 
+                        id="themeToggle" 
+                        class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 relative group"
+                        aria-label="Toggle theme"
+                    >
+                        <i id="themeIcon" class="fas fa-moon text-gray-600 dark:text-gray-300 transition-transform duration-300"></i>
+                        <span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+                            <span id="themeText">Dark Mode</span>
+                        </span>
+                    </button>
+                    
+                    <!-- Language Toggle -->
+                    <button 
+                        id="languageToggle" 
+                        class="hidden md:flex items-center space-x-1 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 text-sm font-medium"
+                    >
+                        <i class="fas fa-language text-gray-600 dark:text-gray-300"></i>
+                        <span class="text-gray-700 dark:text-gray-300">ने/EN</span>
+                    </button>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button 
+                        id="mobileMenuBtn" 
+                        class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                        aria-label="Toggle menu"
+                    >
+                        <i id="menuIcon" class="fas fa-bars text-gray-600 dark:text-gray-300 text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="lg:hidden hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+            <div class="px-4 py-4 space-y-2">
+                <!-- Mobile Search -->
+                <div class="mb-4">
+                    <div class="relative">
+                        <input 
+                            type="text" 
+                            placeholder="खोज्नुहोस्..." 
+                            class="w-full pl-10 pr-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        >
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Mobile Navigation Links -->
+                <a href="/" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 font-medium">
+                    <i class="fas fa-home mr-3"></i>गृहपृष्ठ
+                </a>
+                <a href="/news" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 font-medium">
+                    <i class="fas fa-newspaper mr-3"></i>समाचार
+                </a>
+                <div class="space-y-1">
+                    <button id="categoryToggle" class="w-full flex items-center justify-between px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 font-medium">
+                        <span><i class="fas fa-th-large mr-3"></i>श्रेणी</span>
+                        <i class="fas fa-chevron-down transition-transform duration-200"></i>
+                    </button>
+                    <div id="categoryMenu" class="hidden pl-8 space-y-1">
+                        <a href="/category/politics" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 text-sm">
+                            <i class="fas fa-landmark mr-2"></i>राजनीति
+                        </a>
+                        <a href="/category/sports" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 text-sm">
+                            <i class="fas fa-futbol mr-2"></i>खेलकुद
+                        </a>
+                        <a href="/category/technology" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 text-sm">
+                            <i class="fas fa-laptop-code mr-2"></i>प्रविधि
+                        </a>
+                        <a href="/category/entertainment" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 text-sm">
+                            <i class="fas fa-film mr-2"></i>मनोरञ्जन
+                        </a>
+                        <a href="/category/business" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 text-sm">
+                            <i class="fas fa-briefcase mr-2"></i>व्यापार
+                        </a>
+                    </div>
+                </div>
+                <a href="/about" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 font-medium">
+                    <i class="fas fa-info-circle mr-3"></i>हाम्रो बारेमा
+                </a>
+                <a href="/contact" class="mobile-nav-link block px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 font-medium">
+                    <i class="fas fa-envelope mr-3"></i>सम्पर्क
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content Area (Placeholder) -->
+    <main class="pt-16 md:pt-20 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center py-20">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    नमन खबर
+                </h1>
+                <p class="text-lg text-gray-600 dark:text-gray-400">
+                    नेपाली समाचारको विश्वसनीय स्रोत
+                </p>
+            </div>
+        </div>
+    </main>
+    
+    <!-- JavaScript for Interactive Features -->
+    <script>
+        // Theme Toggle Functionality
+        (function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const themeText = document.getElementById('themeText');
+            const html = document.documentElement;
+            
+            // Get current theme
+            const getCurrentTheme = () => {
+                return html.classList.contains('dark') ? 'dark' : 'light';
+            };
+            
+            // Update theme icon and text
+            const updateThemeUI = (theme) => {
+                if (theme === 'dark') {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    themeText.textContent = 'Light Mode';
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    themeText.textContent = 'Dark Mode';
+                }
+            };
+            
+            // Initialize theme UI
+            updateThemeUI(getCurrentTheme());
+            
+            // Toggle theme
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = getCurrentTheme();
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                html.classList.toggle('dark');
+                localStorage.setItem('theme', newTheme);
+                updateThemeUI(newTheme);
+            });
+        })();
+        
+        // Mobile Menu Toggle
+        (function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('fa-bars');
+                menuIcon.classList.toggle('fa-times');
+            });
+        })();
+        
+        // Mobile Category Menu Toggle
+        (function() {
+            const categoryToggle = document.getElementById('categoryToggle');
+            const categoryMenu = document.getElementById('categoryMenu');
+            const chevron = categoryToggle.querySelector('.fa-chevron-down');
+            
+            if (categoryToggle) {
+                categoryToggle.addEventListener('click', () => {
+                    categoryMenu.classList.toggle('hidden');
+                    chevron.classList.toggle('rotate-180');
+                });
+            }
+        })();
+        
+        // Navbar Scroll Effect
+        (function() {
+            const navbar = document.getElementById('navbar');
+            let lastScroll = 0;
+            
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll > 100) {
+                    navbar.classList.add('shadow-lg');
+                    navbar.classList.remove('shadow-sm');
+                } else {
+                    navbar.classList.remove('shadow-lg');
+                    navbar.classList.add('shadow-sm');
+                }
+                
+                lastScroll = currentScroll;
+            });
+        })();
+        
+        // Active Navigation Link Highlighting
+        (function() {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('text-blue-600', 'dark:text-blue-400', 'font-semibold');
+                    link.classList.add('bg-gray-100', 'dark:bg-gray-800');
+                }
+            });
+        })();
+        
+        // Search Functionality (Placeholder)
+        (function() {
+            const searchInputs = document.querySelectorAll('input[type="text"][placeholder*="खोज्नुहोस्"]');
+            
+            searchInputs.forEach(input => {
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        const query = input.value.trim();
+                        if (query) {
+                            // Implement search functionality here
+                            console.log('Searching for:', query);
+                        }
+                    }
+                });
+            });
+        })();
+    </script>
+    
+    <!-- Tailwind Dark Mode Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'nepali': ['Noto Sans Devanagari', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</body>
+</html>
