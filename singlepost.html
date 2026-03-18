@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ne" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>समाचार शीर्षक — नमन खबर</title>
+    <meta name="description" content="समाचार विवरण पृष्ठ — नमन खबर">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        (function () {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+        })();
+    </script>
+
+    <style>
+        *{font-family:'Mukta','Noto Sans Devanagari','Arial Unicode MS',sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+        body{font-size:17px;line-height:1.9;letter-spacing:0}
+        .dark body{color:#f3f4f6}
+        *:focus{outline:none!important;box-shadow:none!important}
+        .bbc-divider{height:1px;background:rgba(17,24,39,.18)}
+        .dark .bbc-divider{background:rgba(243,244,246,.18)}
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 grid place-items-center text-white">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="leading-tight">
+                        <div class="text-xl md:text-2xl font-extrabold">नमन खबर</div>
+                        <div class="text-[11px] text-gray-500 dark:text-gray-400 -mt-1">Namankhabar</div>
+                    </div>
+                </a>
+
+                <div class="hidden lg:flex items-center gap-2">
+                    <a href="index.html" class="px-3 py-2 text-sm font-semibold hover:opacity-80">गृहपृष्ठ</a>
+                    <a href="category.html" class="px-3 py-2 text-sm font-semibold hover:opacity-80">श्रेणी</a>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <button id="themeToggle" class="w-10 h-10 rounded-full grid place-items-center hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Toggle theme">
+                        <i id="themeIcon" class="fas fa-moon text-gray-700 dark:text-gray-300"></i>
+                    </button>
+                    <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 rounded-full grid place-items-center hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Toggle menu">
+                        <i id="menuIcon" class="fas fa-bars text-gray-700 dark:text-gray-300"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="lg:hidden hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+            <div class="px-4 py-4 space-y-2">
+                <a href="index.html" class="block px-3 py-2 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">गृहपृष्ठ</a>
+                <a href="category.html" class="block px-3 py-2 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">श्रेणी</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-20 md:pt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+            <!-- Breadcrumb -->
+            <div class="text-sm text-gray-600 dark:text-gray-400">
+                <a href="index.html" class="hover:opacity-80">गृहपृष्ठ</a>
+                <span class="mx-2">/</span>
+                <a href="category.html" class="hover:opacity-80">राजनीति</a>
+                <span class="mx-2">/</span>
+                <span class="font-semibold text-gray-900 dark:text-gray-100">समाचार</span>
+            </div>
+
+            <div class="mt-4 grid grid-cols-1 lg:grid-cols-10 gap-8 items-start">
+                <!-- Article (80%) -->
+                <article class="lg:col-span-8">
+                    <header class="space-y-3">
+                        <div class="flex flex-wrap items-center gap-2 text-xs">
+                            <span class="px-2 py-1 bg-red-600 text-white font-extrabold">LIVE</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 font-bold">राजनीति</span>
+                            <span class="text-gray-600 dark:text-gray-400">२ घण्टा अघि</span>
+                        </div>
+                        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">समाचार शीर्षक यहाँ राख्नुहोस् (Single Post)</h1>
+                        <p class="text-gray-700 dark:text-gray-300 text-sm md:text-base">उपशीर्षक/सारांश — पाठकलाई सुरुमा नै सन्दर्भ दिने १–२ लाइन।</p>
+                        <div class="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-3 flex-wrap">
+                            <span><i class="far fa-user mr-1"></i>सम्पादक</span>
+                            <span>•</span>
+                            <span><i class="far fa-clock mr-1"></i>Mar 18, 2026</span>
+                            <span>•</span>
+                            <span><i class="far fa-eye mr-1"></i>12,340</span>
+                        </div>
+                        <div class="bbc-divider"></div>
+                    </header>
+
+                    <figure class="mt-5">
+                        <img class="w-full h-[260px] sm:h-[360px] md:h-[460px] object-cover" alt="Post featured image placeholder" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1400'%20height='900'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20stop-color='%23111827'/%3E%3Cstop%20offset='1'%20stop-color='%23f97316'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='1400'%20height='900'%20fill='url(%23g)'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='34'%20fill='white'%20opacity='0.95'%3EFeatured%20Image%20%7C%201400%20%C3%97%20900%3C/text%3E%3C/svg%3E">
+                        <figcaption class="mt-2 text-xs text-gray-600 dark:text-gray-400">तस्बिर: स्रोत/फोटो क्रेडिट</figcaption>
+                    </figure>
+
+                    <!-- Content -->
+                    <div class="mt-6 space-y-4 text-gray-900 dark:text-gray-100">
+                        <p>यो डेमो सामग्री हो। यहाँ तपाईंको समाचारको मुख्य सामग्री रहनेछ। परिच्छेदहरू पढ्न सजिलो बनाइएको छ (बेहतर line-height)।</p>
+                        <p>समाचार सामग्रीमा उद्धरण, तथ्य, र पृष्ठभूमि विवरण राख्न सकिन्छ।</p>
+                        <blockquote class="pl-4 border-l-4 border-gray-900 dark:border-gray-100 text-gray-800 dark:text-gray-200 font-semibold">
+                            “यो एउटा उद्धरण (quote) को नमुना हो — महत्वपूर्ण लाइनलाई हाइलाइट गर्न।”
+                        </blockquote>
+                        <p>अर्को परिच्छेद — थप विवरण, विश्लेषण, र निष्कर्ष।</p>
+                    </div>
+
+                    <!-- Share -->
+                    <div class="mt-8 flex items-center gap-3 flex-wrap">
+                        <span class="text-sm font-extrabold uppercase tracking-wide">Share</span>
+                        <a href="#" class="w-10 h-10 grid place-items-center bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 grid place-items-center bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 grid place-items-center bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+
+                    <!-- Recommended news -->
+                    <section class="mt-12">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-base md:text-lg font-extrabold uppercase tracking-wide">Recommendation</h2>
+                            <a href="index.html" class="text-sm font-bold text-gray-600 dark:text-gray-300 hover:opacity-80">More ›</a>
+                        </div>
+                        <div class="bbc-divider mt-3"></div>
+                        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <a href="singlepost.html" class="block">
+                                <img class="w-full h-36 object-cover" alt="Recommended placeholder" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='800'%20height='450'%3E%3Crect%20width='800'%20height='450'%20fill='%2393c5fd'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='18'%20fill='%230f172a'%20opacity='0.85'%3E800%20%C3%97%20450%3C/text%3E%3C/svg%3E">
+                                <div class="mt-3 font-extrabold leading-snug">सिफारिस समाचार शीर्षक — १</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">३ घण्टा अघि</div>
+                            </a>
+                            <a href="singlepost.html" class="block">
+                                <img class="w-full h-36 object-cover" alt="Recommended placeholder" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='800'%20height='450'%3E%3Crect%20width='800'%20height='450'%20fill='%2334d399'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='18'%20fill='white'%20opacity='0.9'%3E800%20%C3%97%20450%3C/text%3E%3C/svg%3E">
+                                <div class="mt-3 font-extrabold leading-snug">सिफारिस समाचार शीर्षक — २</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">६ घण्टा अघि</div>
+                            </a>
+                            <a href="singlepost.html" class="block">
+                                <img class="w-full h-36 object-cover" alt="Recommended placeholder" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='800'%20height='450'%3E%3Crect%20width='800'%20height='450'%20fill='%23f59e0b'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='18'%20fill='white'%20opacity='0.9'%3E800%20%C3%97%20450%3C/text%3E%3C/svg%3E">
+                                <div class="mt-3 font-extrabold leading-snug">सिफारिस समाचार शीर्षक — ३</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">१ दिन अघि</div>
+                            </a>
+                        </div>
+                    </section>
+
+                    <!-- Comments -->
+                    <section class="mt-12">
+                        <h2 class="text-base md:text-lg font-extrabold uppercase tracking-wide">Comments</h2>
+                        <div class="bbc-divider mt-3"></div>
+
+                        <form id="commentForm" class="mt-6 grid grid-cols-1 gap-3 max-w-2xl">
+                            <input id="commentName" class="px-4 py-3 bg-gray-100 dark:bg-gray-800" placeholder="तपाईंको नाम" required>
+                            <textarea id="commentText" class="px-4 py-3 bg-gray-100 dark:bg-gray-800 min-h-[120px]" placeholder="कमेन्ट लेख्नुहोस्..." required></textarea>
+                            <button class="px-6 py-3 bg-gray-900 text-white font-extrabold w-fit hover:opacity-90" type="submit">
+                                कमेन्ट पोस्ट गर्नुहोस्
+                            </button>
+                        </form>
+
+                        <div id="commentList" class="mt-8 space-y-6 max-w-2xl">
+                            <div>
+                                <div class="flex items-center justify-between">
+                                    <div class="font-extrabold">नमन</div>
+                                    <div class="text-xs text-gray-600 dark:text-gray-400">आज</div>
+                                </div>
+                                <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">यो एउटा डेमो कमेन्ट हो।</p>
+                                <div class="bbc-divider mt-4"></div>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+
+                <!-- Sidebar (20% ads) -->
+                <aside class="lg:col-span-2 space-y-6 lg:sticky lg:top-24">
+                    <section aria-label="Ads" class="space-y-3">
+                        <div class="text-sm font-extrabold uppercase tracking-wide">Ads</div>
+                        <div class="bbc-divider"></div>
+                        <a href="#" class="block bg-gray-100 dark:bg-gray-800">
+                            <img class="w-full h-[240px] object-cover" alt="Sidebar ad placeholder" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='300'%20height='600'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20stop-color='%23111827'/%3E%3Cstop%20offset='1'%20stop-color='%233b82f6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='300'%20height='600'%20fill='url(%23g)'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='20'%20fill='white'%20opacity='0.95'%3E300%20%C3%97%20600%20Ad%3C/text%3E%3C/svg%3E">
+                        </a>
+                        <a href="#" class="block bg-gray-100 dark:bg-gray-800">
+                            <img class="w-full h-[180px] object-cover" alt="Sidebar ad placeholder" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='300'%20height='250'%3E%3Crect%20width='300'%20height='250'%20fill='%23e5e7eb'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='18'%20fill='%236b7280'%3E300%20%C3%97%20250%20Ad%3C/text%3E%3C/svg%3E">
+                        </a>
+                    </section>
+
+                    <section aria-label="Trending" class="space-y-3">
+                        <div class="text-sm font-extrabold uppercase tracking-wide">Trending</div>
+                        <div class="bbc-divider"></div>
+                        <div class="space-y-3 text-sm">
+                            <a href="singlepost.html" class="block font-extrabold leading-snug hover:opacity-80">ट्रेन्डिङ शीर्षक — १</a>
+                            <div class="bbc-divider"></div>
+                            <a href="singlepost.html" class="block font-extrabold leading-snug hover:opacity-80">ट्रेन्डिङ शीर्षक — २</a>
+                            <div class="bbc-divider"></div>
+                            <a href="singlepost.html" class="block font-extrabold leading-snug hover:opacity-80">ट्रेन्डिङ शीर्षक — ३</a>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div>
+                    <div class="font-extrabold text-xl">नमन खबर</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">नेपालको विश्वसनीय समाचार स्रोत</div>
+                </div>
+                <div class="flex flex-wrap gap-4 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <a href="about.html" class="hover:opacity-80">हाम्रो बारेमा</a>
+                    <a href="contact.html" class="hover:opacity-80">सम्पर्क</a>
+                    <a href="#" class="hover:opacity-80">गोपनीयता नीति</a>
+                    <a href="#" class="hover:opacity-80">सर्तहरू</a>
+                </div>
+            </div>
+            <div class="bbc-divider mt-8"></div>
+            <div class="mt-4 text-xs text-gray-600 dark:text-gray-400">&copy; <span id="year"></span> Namankhabar. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        tailwind.config = { darkMode: 'class' };
+    </script>
+
+    <script>
+        // Navbar: theme + mobile
+        (function () {
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+
+            const updateThemeIcon = () => {
+                const isDark = html.classList.contains('dark');
+                themeIcon.classList.toggle('fa-moon', !isDark);
+                themeIcon.classList.toggle('fa-sun', isDark);
+            };
+            updateThemeIcon();
+
+            themeToggle.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+                updateThemeIcon();
+            });
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('fa-bars');
+                menuIcon.classList.toggle('fa-times');
+            });
+        })();
+
+        // Comments: add to list
+        (function () {
+            const form = document.getElementById('commentForm');
+            const nameEl = document.getElementById('commentName');
+            const textEl = document.getElementById('commentText');
+            const list = document.getElementById('commentList');
+
+            const escapeHtml = (s) => s.replace(/[&<>'\"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[c]));
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = nameEl.value.trim();
+                const text = textEl.value.trim();
+                if (!name || !text) return;
+                const now = new Date();
+                const item = document.createElement('div');
+                item.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div class="font-extrabold">${escapeHtml(name)}</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400">${now.toLocaleString()}</div>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">${escapeHtml(text)}</p>
+                    <div class="bbc-divider mt-4"></div>
+                `;
+                list.prepend(item);
+                form.reset();
+            });
+        })();
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
