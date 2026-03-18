@@ -132,11 +132,14 @@
                     </div>
 
                     <!-- Share -->
-                    <div class="mt-8 flex items-center gap-3 flex-wrap">
+                    <div class="mt-8 flex items-center gap-3 flex-wrap" data-share>
                         <span class="text-sm font-extrabold uppercase tracking-wide">Share</span>
-                        <a href="#" class="w-10 h-10 grid place-items-center bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 grid place-items-center bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="w-10 h-10 grid place-items-center bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a id="shareFacebook" href="#" target="_blank" rel="noopener noreferrer" class="w-10 h-10 grid place-items-center bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a id="shareTwitter" href="#" target="_blank" rel="noopener noreferrer" class="w-10 h-10 grid place-items-center bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Share on X"><i class="fab fa-twitter"></i></a>
+                        <a id="shareWhatsApp" href="#" target="_blank" rel="noopener noreferrer" class="w-10 h-10 grid place-items-center bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <button id="nativeShareBtn" class="hidden w-10 h-10 grid place-items-center bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Share">
+                            <i class="fas fa-share-nodes"></i>
+                        </button>
                         <button id="copyLinkBtn" class="w-10 h-10 grid place-items-center bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Copy link">
                             <i class="fas fa-link"></i>
                         </button>
@@ -322,6 +325,10 @@
             const toast = document.getElementById('shareToast');
             const ttsBtn = document.getElementById('ttsBtn');
             const ttsIcon = document.getElementById('ttsIcon');
+            const nativeShareBtn = document.getElementById('nativeShareBtn');
+            const shareFacebook = document.getElementById('shareFacebook');
+            const shareTwitter = document.getElementById('shareTwitter');
+            const shareWhatsApp = document.getElementById('shareWhatsApp');
 
             // Progress
             const onScroll = () => {
@@ -392,6 +399,24 @@
                         showToast('Copied!');
                     } catch {
                         showToast('Copy failed');
+                    }
+                });
+            }
+
+            // Social share links + native share
+            const title = (document.querySelector('h1')?.innerText || document.title || '').trim();
+            const url = window.location.href;
+            if (shareFacebook) shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+            if (shareTwitter) shareTwitter.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
+            if (shareWhatsApp) shareWhatsApp.href = `https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`;
+
+            if (nativeShareBtn && navigator.share) {
+                nativeShareBtn.classList.remove('hidden');
+                nativeShareBtn.addEventListener('click', async () => {
+                    try {
+                        await navigator.share({ title, text: title, url });
+                    } catch {
+                        // user cancelled
                     }
                 });
             }
