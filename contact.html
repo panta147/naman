@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ne" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>सम्पर्क | नमन खबर</title>
+    <meta name="description" content="नमन खबर सम्पर्क — इमेल, फोन, ठेगाना र सन्देश पठाउने फारम।">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        (function () {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+        })();
+    </script>
+
+    <style>
+        *{font-family:'Mukta','Noto Sans Devanagari','Arial Unicode MS',sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+        body{font-size:17px;line-height:1.9;letter-spacing:0}
+        .dark body{color:#f3f4f6}
+        *:focus{outline:none!important;box-shadow:none!important}
+        .bbc-divider{height:1px;background:rgba(17,24,39,.18)}
+        .dark .bbc-divider{background:rgba(243,244,246,.18)}
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+
+    <!-- Navbar (shared) -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 grid place-items-center text-white">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="leading-tight">
+                        <div class="text-xl md:text-2xl font-extrabold">नमन खबर</div>
+                        <div class="text-[11px] text-gray-500 dark:text-gray-400 -mt-1">Namankhabar</div>
+                    </div>
+                </a>
+
+                <div class="hidden lg:flex items-center gap-2">
+                    <a href="index.html" class="px-3 py-2 text-sm font-semibold hover:opacity-80">गृहपृष्ठ</a>
+                    <a href="category.html" class="px-3 py-2 text-sm font-semibold hover:opacity-80">श्रेणी</a>
+                    <a href="about.html" class="px-3 py-2 text-sm font-semibold hover:opacity-80">हाम्रो बारेमा</a>
+                    <a href="contact.html" class="px-3 py-2 text-sm font-extrabold">सम्पर्क</a>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <button id="themeToggle" class="w-10 h-10 rounded-full grid place-items-center hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Toggle theme">
+                        <i id="themeIcon" class="fas fa-moon text-gray-700 dark:text-gray-300"></i>
+                    </button>
+                    <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 rounded-full grid place-items-center hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Toggle menu">
+                        <i id="menuIcon" class="fas fa-bars text-gray-700 dark:text-gray-300"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="lg:hidden hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+            <div class="px-4 py-4 space-y-2">
+                <a href="index.html" class="block px-3 py-2 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">गृहपृष्ठ</a>
+                <a href="category.html" class="block px-3 py-2 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">श्रेणी</a>
+                <a href="about.html" class="block px-3 py-2 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">हाम्रो बारेमा</a>
+                <a href="contact.html" class="block px-3 py-2 font-extrabold hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">सम्पर्क</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-20 md:pt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+            <!-- Header -->
+            <section class="space-y-4">
+                <div class="text-sm text-gray-600 dark:text-gray-400">
+                    <a href="index.html" class="hover:opacity-80">गृहपृष्ठ</a>
+                    <span class="mx-2">/</span>
+                    <span class="font-semibold text-gray-900 dark:text-gray-100">सम्पर्क</span>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <div class="lg:col-span-6">
+                        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">सम्पर्क गर्नुहोस्</h1>
+                        <p class="mt-3 text-gray-700 dark:text-gray-300">सुझाव, विज्ञापन, प्रेस रिलिज वा कुनै पनि प्रश्नका लागि हामीलाई सन्देश पठाउनुहोस्।</p>
+                        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="p-5 bg-gray-100 dark:bg-gray-800">
+                                <div class="text-sm font-extrabold uppercase tracking-wide">Phone</div>
+                                <div class="mt-2 text-lg font-extrabold"><a href="tel:+9771234567890" class="hover:opacity-80">+977-1-234-5678</a></div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Sun–Fri, 10AM–6PM</div>
+                            </div>
+                            <div class="p-5 bg-gray-100 dark:bg-gray-800">
+                                <div class="text-sm font-extrabold uppercase tracking-wide">Email</div>
+                                <div class="mt-2 text-lg font-extrabold"><a href="mailto:info@namankhabar.com" class="hover:opacity-80">info@namankhabar.com</a></div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">We reply within 24 hours</div>
+                            </div>
+                            <div class="p-5 bg-gray-100 dark:bg-gray-800 sm:col-span-2">
+                                <div class="text-sm font-extrabold uppercase tracking-wide">Office</div>
+                                <div class="mt-2 text-lg font-extrabold">काठमाडौं, नेपाल</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Put your exact address here</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-6">
+                        <div class="p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+                            <h2 class="text-xl md:text-2xl font-extrabold">सन्देश पठाउनुहोस्</h2>
+                            <div class="bbc-divider mt-4"></div>
+                            <form id="contactForm" class="mt-6 grid grid-cols-1 gap-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <input class="px-4 py-3 bg-gray-100 dark:bg-gray-800" placeholder="नाम" required>
+                                    <input type="email" class="px-4 py-3 bg-gray-100 dark:bg-gray-800" placeholder="इमेल" required>
+                                </div>
+                                <input class="px-4 py-3 bg-gray-100 dark:bg-gray-800" placeholder="विषय" required>
+                                <textarea class="px-4 py-3 bg-gray-100 dark:bg-gray-800 min-h-[140px]" placeholder="सन्देश..." required></textarea>
+                                <button type="submit" class="px-6 py-3 bg-gray-900 text-white font-extrabold w-fit hover:opacity-90">
+                                    सन्देश पठाउनुहोस्
+                                </button>
+                                <p id="contactSuccess" class="hidden text-sm font-semibold text-green-600 dark:text-green-400">धन्यवाद! तपाईंको सन्देश पठाइयो।</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="bbc-divider mt-12"></div>
+
+            <!-- Map placeholder -->
+            <section class="mt-10">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-base md:text-lg font-extrabold uppercase tracking-wide">Location</h2>
+                    <a href="#" class="text-sm font-bold text-gray-600 dark:text-gray-300 hover:opacity-80">Open in Maps ›</a>
+                </div>
+                <div class="mt-4 bg-gray-100 dark:bg-gray-800 overflow-hidden">
+                    <img class="w-full h-[260px] md:h-[360px] object-cover" alt="Map placeholder" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1400'%20height='700'%3E%3Crect%20width='1400'%20height='700'%20fill='%23e5e7eb'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='28'%20fill='%236b7280'%3EMap%20Placeholder%3C/text%3E%3C/svg%3E">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div>
+                    <div class="font-extrabold text-xl">नमन खबर</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">नेपालको विश्वसनीय समाचार स्रोत</div>
+                </div>
+                <div class="flex flex-wrap gap-4 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <a href="about.html" class="hover:opacity-80">हाम्रो बारेमा</a>
+                    <a href="contact.html" class="hover:opacity-80">सम्पर्क</a>
+                    <a href="#" class="hover:opacity-80">गोपनीयता नीति</a>
+                    <a href="#" class="hover:opacity-80">सर्तहरू</a>
+                </div>
+            </div>
+            <div class="bbc-divider mt-8"></div>
+            <div class="mt-4 text-xs text-gray-600 dark:text-gray-400">&copy; <span id="year"></span> Namankhabar. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        tailwind.config = { darkMode: 'class' };
+    </script>
+    <script>
+        (function () {
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+
+            const updateThemeIcon = () => {
+                const isDark = html.classList.contains('dark');
+                themeIcon.classList.toggle('fa-moon', !isDark);
+                themeIcon.classList.toggle('fa-sun', isDark);
+            };
+            updateThemeIcon();
+
+            themeToggle.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+                updateThemeIcon();
+            });
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('fa-bars');
+                menuIcon.classList.toggle('fa-times');
+            });
+
+            document.getElementById('year').textContent = new Date().getFullYear();
+        })();
+
+        // Contact form demo handler
+        (function () {
+            const form = document.getElementById('contactForm');
+            const success = document.getElementById('contactSuccess');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                success.classList.remove('hidden');
+                form.reset();
+                setTimeout(() => success.classList.add('hidden'), 4000);
+            });
+        })();
+    </script>
+</body>
+</html>
