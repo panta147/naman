@@ -43,10 +43,10 @@
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google Fonts - Mukta Font (Most used for Nepali sites) -->
+    <!-- Google Fonts - Mukta Font (Most used for Nepali sites) with Devanagari support -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
@@ -72,8 +72,80 @@
     </script>
     
     <style>
+        /* Base Font Settings - Optimized for Nepali News Reading */
         * {
-            font-family: 'Mukta', sans-serif;
+            font-family: 'Mukta', 'Noto Sans Devanagari', 'Arial Unicode MS', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+        
+        /* Body Typography - Enhanced Readability */
+        body {
+            font-size: 16px;
+            line-height: 1.7;
+            letter-spacing: 0.01em;
+            font-weight: 400;
+            color: #1f2937;
+        }
+        
+        /* Dark mode body text */
+        body.dark, .dark body {
+            color: #f3f4f6;
+        }
+        
+        /* Headings - Better Spacing and Weight */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
+            font-weight: 600;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5em;
+        }
+        
+        /* Paragraphs - Optimal Reading */
+        p {
+            line-height: 1.8;
+            letter-spacing: 0.02em;
+            margin-bottom: 1em;
+        }
+        
+        /* Links - Better Visibility */
+        a {
+            text-decoration: none;
+            transition: all 0.2s ease;
+            letter-spacing: 0.01em;
+        }
+        
+        /* Navigation Links - Improved Readability */
+        .nav-link, .mobile-nav-link {
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            font-size: 15px;
+        }
+        
+        /* Input Fields - Better Text Rendering */
+        input, textarea, select {
+            font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
+            font-size: 15px;
+            letter-spacing: 0.01em;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Button Text */
+        button {
+            font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Nepali Text Specific Optimizations */
+        [lang="ne"], .nepali-text {
+            font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
+            font-feature-settings: "kern" 1, "liga" 1;
+            text-rendering: optimizeLegibility;
+            line-height: 1.75;
         }
         
         /* Custom scrollbar */
@@ -102,6 +174,92 @@
         .navbar-blur {
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+        }
+        
+        /* Improve text contrast for better readability */
+        .text-gray-600 {
+            color: #4b5563 !important;
+        }
+        
+        .dark .text-gray-400 {
+            color: #9ca3af !important;
+        }
+        
+        /* Better focus states for accessibility */
+        *:focus {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+        
+        /* Optimize font rendering for small screens */
+        @media (max-width: 640px) {
+            body {
+                font-size: 15px;
+                line-height: 1.65;
+            }
+            
+            .nav-link, .mobile-nav-link {
+                font-size: 14px;
+            }
+        }
+        
+        /* Ensure proper font rendering for all Nepali text elements */
+        nav, footer, main {
+            font-feature-settings: "kern" 1, "liga" 1;
+            -webkit-font-feature-settings: "kern" 1, "liga" 1;
+            text-rendering: optimizeLegibility;
+        }
+        
+        /* Better spacing for Nepali text in navigation */
+        nav a, nav button {
+            line-height: 1.6;
+        }
+        
+        /* Footer text optimization */
+        footer {
+            line-height: 1.75;
+        }
+        
+        footer a, footer p, footer span {
+            letter-spacing: 0.01em;
+        }
+        
+        /* Ads Section Styling */
+        #adSlider {
+            will-change: transform;
+        }
+        
+        #adSlider > div {
+            flex-shrink: 0;
+        }
+        
+        /* Ad navigation buttons */
+        #adPrev, #adNext {
+            transition: opacity 0.3s ease, background-color 0.2s ease;
+        }
+        
+        .group:hover #adPrev,
+        .group:hover #adNext {
+            opacity: 1 !important;
+        }
+        
+        /* Ad dots active state */
+        .ad-dot.active {
+            opacity: 1 !important;
+            background-color: #3b82f6 !important;
+        }
+        
+        /* Responsive ads section */
+        @media (max-width: 1024px) {
+            #adSlider {
+                height: 100px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            #adSlider {
+                height: 120px;
+            }
         }
     </style>
     
@@ -308,14 +466,124 @@
         </div>
     </nav>
     
+    <!-- Ads Section with Date/Time Info -->
+    <section class="pt-16 md:pt-20 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-3 md:gap-4 py-3">
+                
+                <!-- Left Side: Nepali Date/Time Info (25%) -->
+                <div class="w-full lg:w-1/4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-800 rounded-lg p-3 md:p-4 border border-gray-200 dark:border-gray-700 shadow-sm">
+                    <div class="space-y-2">
+                        <!-- Main Date -->
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-calendar-alt text-blue-600 dark:text-blue-400 text-sm"></i>
+                            <h3 class="text-base md:text-lg font-semibold text-gray-900 dark:text-gray-100" lang="ne">
+                                ४ चैत २०८२, बुधवार
+                            </h3>
+                        </div>
+                        
+                        <!-- Tithi -->
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-moon text-purple-600 dark:text-purple-400 text-xs"></i>
+                            <p class="text-sm text-gray-700 dark:text-gray-300" lang="ne">
+                                चैत कृष्ण चतुर्दशी
+                            </p>
+                        </div>
+                        
+                        <!-- Panchang -->
+                        <div class="flex items-start space-x-2">
+                            <i class="fas fa-star text-yellow-600 dark:text-yellow-400 text-xs mt-1"></i>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed" lang="ne">
+                                पञ्चाङ्ग: साध्य शकुनि शतभिषा
+                            </p>
+                        </div>
+                        
+                        <!-- Time -->
+                        <div class="flex items-center space-x-2 pt-1 border-t border-gray-200 dark:border-gray-700">
+                            <i class="fas fa-clock text-green-600 dark:text-green-400 text-sm"></i>
+                            <p class="text-sm font-medium text-gray-800 dark:text-gray-200" lang="ne" id="nepaliTime">
+                                बिहानको ११:२५:२७
+                            </p>
+                        </div>
+                        
+                        <!-- English Date -->
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-globe text-gray-500 dark:text-gray-400 text-xs"></i>
+                            <p class="text-xs text-gray-600 dark:text-gray-400" id="englishDate">
+                                Mar 18, 2026
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Side: Ad Slider (75%) -->
+                <div class="w-full lg:w-3/4 relative overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm group" style="height: 100px; min-height: 100px;">
+                    <!-- Ad Slides Container -->
+                    <div id="adSlider" class="flex transition-transform duration-500 ease-in-out h-full">
+                        <!-- Ad Slide 1 -->
+                        <div class="min-w-full h-full flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 relative cursor-pointer">
+                            <div class="text-center text-white">
+                                <i class="fas fa-ad text-4xl mb-2 opacity-50"></i>
+                                <p class="text-sm font-medium">Advertisement</p>
+                                <p class="text-xs opacity-75">728 x 90</p>
+                            </div>
+                            <div class="absolute top-2 right-2 bg-black bg-opacity-30 text-white text-xs px-2 py-1 rounded">
+                                Ad
+                            </div>
+                        </div>
+                        
+                        <!-- Ad Slide 2 -->
+                        <div class="min-w-full h-full flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 relative cursor-pointer">
+                            <div class="text-center text-white">
+                                <i class="fas fa-ad text-4xl mb-2 opacity-50"></i>
+                                <p class="text-sm font-medium">Advertisement</p>
+                                <p class="text-xs opacity-75">728 x 90</p>
+                            </div>
+                            <div class="absolute top-2 right-2 bg-black bg-opacity-30 text-white text-xs px-2 py-1 rounded">
+                                Ad
+                            </div>
+                        </div>
+                        
+                        <!-- Ad Slide 3 -->
+                        <div class="min-w-full h-full flex items-center justify-center bg-gradient-to-r from-green-500 to-teal-500 relative cursor-pointer">
+                            <div class="text-center text-white">
+                                <i class="fas fa-ad text-4xl mb-2 opacity-50"></i>
+                                <p class="text-sm font-medium">Advertisement</p>
+                                <p class="text-xs opacity-75">728 x 90</p>
+                            </div>
+                            <div class="absolute top-2 right-2 bg-black bg-opacity-30 text-white text-xs px-2 py-1 rounded">
+                                Ad
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Ad Navigation Dots -->
+                    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                        <button class="ad-dot w-2 h-2 rounded-full bg-white opacity-50 hover:opacity-100 transition-all duration-200" data-slide="0"></button>
+                        <button class="ad-dot w-2 h-2 rounded-full bg-white opacity-50 hover:opacity-100 transition-all duration-200" data-slide="1"></button>
+                        <button class="ad-dot w-2 h-2 rounded-full bg-white opacity-50 hover:opacity-100 transition-all duration-200" data-slide="2"></button>
+                    </div>
+                    
+                    <!-- Previous/Next Buttons -->
+                    <button id="adPrev" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-40 hover:bg-opacity-60 text-white p-2 rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100 z-10 shadow-lg">
+                        <i class="fas fa-chevron-left text-sm"></i>
+                    </button>
+                    <button id="adNext" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-40 hover:bg-opacity-60 text-white p-2 rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100 z-10 shadow-lg">
+                        <i class="fas fa-chevron-right text-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Main Content Area (Placeholder) -->
-    <main class="pt-16 md:pt-20 min-h-screen pb-20">
+    <main class="pt-16 md:pt-20 min-h-screen pb-20" lang="ne">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="text-center py-20">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent leading-tight" lang="ne">
                     नमन खबर
                 </h1>
-                <p class="text-lg text-gray-600 dark:text-gray-400">
+                <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed" lang="ne" style="line-height: 1.8;">
                     नेपाली समाचारको विश्वसनीय स्रोत
                 </p>
             </div>
@@ -658,6 +926,118 @@
                 });
             });
         })();
+        
+        // Ad Slider Functionality
+        (function() {
+            const adSlider = document.getElementById('adSlider');
+            const adDots = document.querySelectorAll('.ad-dot');
+            const adPrev = document.getElementById('adPrev');
+            const adNext = document.getElementById('adNext');
+            const adContainer = adSlider?.parentElement;
+            
+            if (!adSlider || !adContainer) return;
+            
+            let currentSlide = 0;
+            const totalSlides = adSlider.children.length;
+            
+            // Update slide position
+            const updateSlide = () => {
+                adSlider.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Update dots
+                adDots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.remove('opacity-50');
+                        dot.classList.add('opacity-100', 'bg-blue-500');
+                    } else {
+                        dot.classList.add('opacity-50');
+                        dot.classList.remove('opacity-100', 'bg-blue-500');
+                    }
+                });
+            };
+            
+            // Next slide
+            const nextSlide = () => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateSlide();
+            };
+            
+            // Previous slide
+            const prevSlide = () => {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateSlide();
+            };
+            
+            // Event listeners
+            if (adNext) adNext.addEventListener('click', nextSlide);
+            if (adPrev) adPrev.addEventListener('click', prevSlide);
+            
+            // Dot navigation
+            adDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateSlide();
+                });
+            });
+            
+            // Auto-play slider (change slide every 5 seconds)
+            let autoPlayInterval = setInterval(nextSlide, 5000);
+            
+            // Pause on hover
+            adContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoPlayInterval);
+            });
+            
+            adContainer.addEventListener('mouseleave', () => {
+                autoPlayInterval = setInterval(nextSlide, 5000);
+            });
+            
+            // Initialize
+            updateSlide();
+        })();
+        
+        // Real-time Clock and Date Updates
+        (function() {
+            const nepaliTimeEl = document.getElementById('nepaliTime');
+            const englishDateEl = document.getElementById('englishDate');
+            
+            if (!nepaliTimeEl || !englishDateEl) return;
+            
+            // Nepali time periods
+            const getNepaliTimePeriod = (hours) => {
+                if (hours >= 4 && hours < 12) return 'बिहानको';
+                if (hours >= 12 && hours < 17) return 'दिउँसोको';
+                if (hours >= 17 && hours < 20) return 'साँझको';
+                return 'रातिको';
+            };
+            
+            // Format time with leading zeros
+            const formatTime = (num) => String(num).padStart(2, '0');
+            
+            // Update time
+            const updateTime = () => {
+                const now = new Date();
+                const hours = now.getHours();
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+                
+                // Nepali time (12-hour format)
+                const nepaliHours = hours % 12 || 12;
+                const timePeriod = getNepaliTimePeriod(hours);
+                const nepaliTimeStr = `${timePeriod} ${nepaliHours}:${formatTime(minutes)}:${formatTime(seconds)}`;
+                
+                // English date
+                const options = { year: 'numeric', month: 'short', day: 'numeric' };
+                const englishDateStr = now.toLocaleDateString('en-US', options);
+                
+                if (nepaliTimeEl) nepaliTimeEl.textContent = nepaliTimeStr;
+                if (englishDateEl) englishDateEl.textContent = englishDateStr;
+            };
+            
+            // Update immediately and then every second
+            updateTime();
+            setInterval(updateTime, 1000);
+        })();
     </script>
     
     <!-- Tailwind Dark Mode Configuration -->
@@ -667,8 +1047,13 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'nepali': ['Mukta', 'sans-serif'],
-                        'sans': ['Mukta', 'sans-serif'],
+                        'nepali': ['Mukta', 'Noto Sans Devanagari', 'Arial Unicode MS', 'sans-serif'],
+                        'sans': ['Mukta', 'Noto Sans Devanagari', 'Arial Unicode MS', 'sans-serif'],
+                    },
+                    fontSize: {
+                        'base': ['16px', { lineHeight: '1.7', letterSpacing: '0.01em' }],
+                        'lg': ['18px', { lineHeight: '1.75', letterSpacing: '0.01em' }],
+                        'xl': ['20px', { lineHeight: '1.6', letterSpacing: '-0.01em' }],
                     },
                 }
             }
