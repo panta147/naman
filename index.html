@@ -180,10 +180,16 @@
         .text-gray-600 { color: #4b5563; }
         .dark .text-gray-400 { color: #9ca3af; }
         
-        /* Better focus states for accessibility */
+        /* Remove focus outline (per requirement: no borders/blue outlines) */
         *:focus {
-            outline: 2px solid #3b82f6;
-            outline-offset: 2px;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Remove borders globally (per requirement) */
+        *, *::before, *::after {
+            border-color: transparent !important;
+            border-width: 0 !important;
         }
         
         /* Optimize font rendering for small screens */
@@ -242,6 +248,13 @@
         .ad-dot.active {
             opacity: 1 !important;
             background-color: #3b82f6 !important;
+        }
+
+        /* Hero dots active state */
+        .hero-dot.active {
+            background: white !important;
+            opacity: 1 !important;
+            transform: scale(1.15);
         }
         
         /* Responsive ads section */
@@ -571,17 +584,252 @@
         </div>
     </section>
     
-    <!-- Main Content Area (Placeholder) -->
+    <!-- Main Content Area -->
     <main class="pt-16 md:pt-20 min-h-screen pb-20" lang="ne">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="text-center py-20">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent leading-tight" lang="ne">
-                    नमन खबर
-                </h1>
-                <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed" lang="ne" style="line-height: 1.8;">
-                    नेपाली समाचारको विश्वसनीय स्रोत
-                </p>
-            </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
+            
+            <!-- Banner / Top Stories (BBC-style) -->
+            <section aria-label="Top Stories" class="space-y-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                    
+                    <!-- Left: Lead text story -->
+                    <article class="lg:col-span-3">
+                        <a href="#" class="block rounded-xl p-5 md:p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-red-600 dark:text-red-400">
+                                    <span class="w-2 h-2 rounded-full bg-red-600 dark:bg-red-400"></span>
+                                    LIVE
+                                </span>
+                                <span class="text-xs text-gray-500 dark:text-gray-400">मुख्य समाचार</span>
+                            </div>
+                            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-gray-100 leading-tight">
+                                आजको मुख्य समाचार शीर्षक यहाँ राख्नुहोस्
+                            </h2>
+                            <p class="mt-3 text-sm md:text-base text-gray-700 dark:text-gray-300">
+                                छोटो सारांश/सबहेडलाइन — पाठकलाई तुरुन्त बुझिने गरी २–३ लाइनमा।
+                            </p>
+                            <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+                                २ घण्टा अघि · नेपाल
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <!-- Center: Hero carousel (3 slides) -->
+                    <div class="lg:col-span-6">
+                        <div class="relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-800 shadow-sm group">
+                            <div id="heroSlider" class="flex transition-transform duration-500 ease-in-out">
+                                
+                                <!-- Slide 1 -->
+                                <article class="min-w-full relative">
+                                    <a href="#" class="block">
+                                        <img
+                                            class="w-full h-[240px] sm:h-[320px] md:h-[380px] object-cover"
+                                            alt="Top story image placeholder"
+                                            src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1200'%20height='700'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20stop-color='%23111827'/%3E%3Cstop%20offset='1'%20stop-color='%233b82f6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='1200'%20height='700'%20fill='url(%23g)'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='34'%20fill='white'%20opacity='0.95'%3EHero%20Image%20%7C%201200%20%C3%97%20700%3C/text%3E%3Ctext%20x='50%25'%20y='62%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='16'%20fill='white'%20opacity='0.8'%3EReplace%20with%20news%20thumbnail%3C/text%3E%3C/svg%3E"
+                                            loading="lazy"
+                                            decoding="async"
+                                        >
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+                                        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <span class="text-xs font-semibold text-white/90 bg-red-600 px-2 py-1 rounded-md">ब्रेकिङ</span>
+                                                <span class="text-xs text-white/80">नेपाल</span>
+                                            </div>
+                                            <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white leading-tight">
+                                                ठूलो समाचार शीर्षक — स्लाइड १
+                                            </h3>
+                                            <p class="mt-2 text-sm sm:text-base text-white/85 max-w-2xl">
+                                                १–२ लाइनको सारांश। यो भागले समाचारको सन्दर्भ दिन्छ।
+                                            </p>
+                                        </div>
+                                    </a>
+                                </article>
+                                
+                                <!-- Slide 2 -->
+                                <article class="min-w-full relative">
+                                    <a href="#" class="block">
+                                        <img
+                                            class="w-full h-[240px] sm:h-[320px] md:h-[380px] object-cover"
+                                            alt="Top story image placeholder"
+                                            src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1200'%20height='700'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20stop-color='%230ea5e9'/%3E%3Cstop%20offset='1'%20stop-color='%2310b981'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='1200'%20height='700'%20fill='url(%23g)'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='34'%20fill='white'%20opacity='0.95'%3EHero%20Image%20%7C%20Slide%202%3C/text%3E%3Ctext%20x='50%25'%20y='62%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='16'%20fill='white'%20opacity='0.8'%3E1200%20%C3%97%20700%3C/text%3E%3C/svg%3E"
+                                            loading="lazy"
+                                            decoding="async"
+                                        >
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+                                        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <span class="text-xs font-semibold text-white/90 bg-blue-600 px-2 py-1 rounded-md">विशेष</span>
+                                                <span class="text-xs text-white/80">खेलकुद</span>
+                                            </div>
+                                            <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white leading-tight">
+                                                ठूलो समाचार शीर्षक — स्लाइड २
+                                            </h3>
+                                            <p class="mt-2 text-sm sm:text-base text-white/85 max-w-2xl">
+                                                सारांश/हाइलाइट यहाँ राख्नुहोस्।
+                                            </p>
+                                        </div>
+                                    </a>
+                                </article>
+                                
+                                <!-- Slide 3 -->
+                                <article class="min-w-full relative">
+                                    <a href="#" class="block">
+                                        <img
+                                            class="w-full h-[240px] sm:h-[320px] md:h-[380px] object-cover"
+                                            alt="Top story image placeholder"
+                                            src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1200'%20height='700'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20stop-color='%23f97316'/%3E%3Cstop%20offset='1'%20stop-color='%23db2777'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='1200'%20height='700'%20fill='url(%23g)'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='34'%20fill='white'%20opacity='0.95'%3EHero%20Image%20%7C%20Slide%203%3C/text%3E%3Ctext%20x='50%25'%20y='62%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='16'%20fill='white'%20opacity='0.8'%3E1200%20%C3%97%20700%3C/text%3E%3C/svg%3E"
+                                            loading="lazy"
+                                            decoding="async"
+                                        >
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+                                        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <span class="text-xs font-semibold text-white/90 bg-purple-600 px-2 py-1 rounded-md">ट्रेन्डिङ</span>
+                                                <span class="text-xs text-white/80">प्रविधि</span>
+                                            </div>
+                                            <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white leading-tight">
+                                                ठूलो समाचार शीर्षक — स्लाइड ३
+                                            </h3>
+                                            <p class="mt-2 text-sm sm:text-base text-white/85 max-w-2xl">
+                                                सारांश/हाइलाइट यहाँ राख्नुहोस्।
+                                            </p>
+                                        </div>
+                                    </a>
+                                </article>
+                            </div>
+                            
+                            <!-- Hero dots -->
+                            <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10 bg-black/25 backdrop-blur px-3 py-1.5 rounded-full">
+                                <button class="hero-dot w-2.5 h-2.5 rounded-full bg-white/70 hover:bg-white transition-all duration-200" aria-label="Go to hero slide 1" data-slide="0"></button>
+                                <button class="hero-dot w-2.5 h-2.5 rounded-full bg-white/70 hover:bg-white transition-all duration-200" aria-label="Go to hero slide 2" data-slide="1"></button>
+                                <button class="hero-dot w-2.5 h-2.5 rounded-full bg-white/70 hover:bg-white transition-all duration-200" aria-label="Go to hero slide 3" data-slide="2"></button>
+                            </div>
+                            
+                            <!-- Hero arrows -->
+                            <button id="heroPrev" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white w-10 h-10 rounded-full grid place-items-center transition-all duration-200 opacity-0 group-hover:opacity-100 z-10 shadow-lg" aria-label="Previous top story">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button id="heroNext" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white w-10 h-10 rounded-full grid place-items-center transition-all duration-200 opacity-0 group-hover:opacity-100 z-10 shadow-lg" aria-label="Next top story">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Stacked stories -->
+                    <aside class="lg:col-span-3 space-y-4">
+                        <article class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                            <a href="#" class="block">
+                                <div class="grid grid-cols-3">
+                                    <div class="col-span-1">
+                                        <img class="w-full h-full object-cover" alt="Story image placeholder" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='320'%20height='240'%3E%3Crect%20width='320'%20height='240'%20fill='%23e5e7eb'/%3E%3Ctext%20x='50%25'%20y='52%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='14'%20fill='%236b7280'%3E320%20%C3%97%20240%3C/text%3E%3C/svg%3E" loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="col-span-2 p-4">
+                                        <h3 class="text-base font-bold text-gray-900 dark:text-gray-100 leading-snug">
+                                            दायाँ साइड समाचार शीर्षक — १
+                                        </h3>
+                                        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                            १ लाइनको छोटो विवरण।
+                                        </p>
+                                        <div class="mt-2 text-xs text-gray-500 dark:text-gray-400">२ घण्टा अघि · विश्व</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                        
+                        <article class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                            <a href="#" class="block">
+                                <div class="grid grid-cols-3">
+                                    <div class="col-span-1">
+                                        <img class="w-full h-full object-cover" alt="Story image placeholder" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='320'%20height='240'%3E%3Crect%20width='320'%20height='240'%20fill='%23e5e7eb'/%3E%3Ctext%20x='50%25'%20y='52%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='14'%20fill='%236b7280'%3E320%20%C3%97%20240%3C/text%3E%3C/svg%3E" loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="col-span-2 p-4">
+                                        <h3 class="text-base font-bold text-gray-900 dark:text-gray-100 leading-snug">
+                                            दायाँ साइड समाचार शीर्षक — २
+                                        </h3>
+                                        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                            १ लाइनको छोटो विवरण।
+                                        </p>
+                                        <div class="mt-2 text-xs text-gray-500 dark:text-gray-400">६ घण्टा अघि · एशिया</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                    </aside>
+                </div>
+                
+                <!-- Bottom grid of smaller stories -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                    <article class="group">
+                        <a href="#" class="block">
+                            <div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm group-hover:shadow-md transition-shadow">
+                                <img class="w-full h-40 object-cover" alt="Story thumbnail placeholder" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20stop-color='%239ca3af'/%3E%3Cstop%20offset='1'%20stop-color='%23e5e7eb'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='640'%20height='360'%20fill='url(%23g)'/%3E%3Ctext%20x='50%25'%20y='52%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='16'%20fill='%231f2937'%20opacity='0.75'%3E640%20%C3%97%20360%3C/text%3E%3C/svg%3E" loading="lazy" decoding="async">
+                                <div class="p-4">
+                                    <h3 class="text-base font-bold text-gray-900 dark:text-gray-100 leading-snug">
+                                        सानो कार्ड समाचार शीर्षक — १
+                                    </h3>
+                                    <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">६ घण्टा अघि · नेपाल</div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <article class="group">
+                        <a href="#" class="block">
+                            <div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm group-hover:shadow-md transition-shadow">
+                                <img class="w-full h-40 object-cover" alt="Story thumbnail placeholder" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20stop-color='%2360a5fa'/%3E%3Cstop%20offset='1'%20stop-color='%2393c5fd'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='640'%20height='360'%20fill='url(%23g)'/%3E%3Ctext%20x='50%25'%20y='52%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='16'%20fill='white'%20opacity='0.9'%3E640%20%C3%97%20360%3C/text%3E%3C/svg%3E" loading="lazy" decoding="async">
+                                <div class="p-4">
+                                    <h3 class="text-base font-bold text-gray-900 dark:text-gray-100 leading-snug">
+                                        सानो कार्ड समाचार शीर्षक — २
+                                    </h3>
+                                    <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">११ घण्टा अघि · एशिया</div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <article class="group">
+                        <a href="#" class="block">
+                            <div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm group-hover:shadow-md transition-shadow">
+                                <img class="w-full h-40 object-cover" alt="Story thumbnail placeholder" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20stop-color='%2334d399'/%3E%3Cstop%20offset='1'%20stop-color='%230ea5e9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='640'%20height='360'%20fill='url(%23g)'/%3E%3Ctext%20x='50%25'%20y='52%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='16'%20fill='white'%20opacity='0.9'%3E640%20%C3%97%20360%3C/text%3E%3C/svg%3E" loading="lazy" decoding="async">
+                                <div class="p-4">
+                                    <h3 class="text-base font-bold text-gray-900 dark:text-gray-100 leading-snug">
+                                        सानो कार्ड समाचार शीर्षक — ३
+                                    </h3>
+                                    <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">१५ मिनेट अघि · विश्व</div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <article class="group">
+                        <a href="#" class="block">
+                            <div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm group-hover:shadow-md transition-shadow">
+                                <img class="w-full h-40 object-cover" alt="Story thumbnail placeholder" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20stop-color='%23f59e0b'/%3E%3Cstop%20offset='1'%20stop-color='%23f97316'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='640'%20height='360'%20fill='url(%23g)'/%3E%3Ctext%20x='50%25'%20y='52%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='16'%20fill='white'%20opacity='0.9'%3E640%20%C3%97%20360%3C/text%3E%3C/svg%3E" loading="lazy" decoding="async">
+                                <div class="p-4">
+                                    <h3 class="text-base font-bold text-gray-900 dark:text-gray-100 leading-snug">
+                                        सानो कार्ड समाचार शीर्षक — ४
+                                    </h3>
+                                    <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">४ घण्टा अघि · नेपाल</div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <article class="group">
+                        <a href="#" class="block">
+                            <div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm group-hover:shadow-md transition-shadow">
+                                <img class="w-full h-40 object-cover" alt="Story thumbnail placeholder" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='640'%20height='360'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20stop-color='%23a78bfa'/%3E%3Cstop%20offset='1'%20stop-color='%2360a5fa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='640'%20height='360'%20fill='url(%23g)'/%3E%3Ctext%20x='50%25'%20y='52%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='16'%20fill='white'%20opacity='0.9'%3E640%20%C3%97%20360%3C/text%3E%3C/svg%3E" loading="lazy" decoding="async">
+                                <div class="p-4">
+                                    <h3 class="text-base font-bold text-gray-900 dark:text-gray-100 leading-snug">
+                                        सानो कार्ड समाचार शीर्षक — ५
+                                    </h3>
+                                    <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">७ घण्टा अघि · युरोप</div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </section>
         </div>
     </main>
     
@@ -1028,6 +1276,46 @@
             // Update immediately and then every second
             updateTime();
             setInterval(updateTime, 1000);
+        })();
+
+        // Hero (Top Stories) Carousel
+        (function() {
+            const slider = document.getElementById('heroSlider');
+            const dots = document.querySelectorAll('.hero-dot');
+            const prev = document.getElementById('heroPrev');
+            const next = document.getElementById('heroNext');
+            const container = slider?.parentElement;
+            if (!slider || !container) return;
+
+            let idx = 0;
+            const total = slider.children.length;
+
+            const update = () => {
+                slider.style.transform = `translateX(-${idx * 100}%)`;
+                dots.forEach((d, i) => {
+                    const active = i === idx;
+                    d.classList.toggle('active', active);
+                    d.setAttribute('aria-pressed', active ? 'true' : 'false');
+                });
+            };
+
+            const go = (n) => {
+                idx = (n + total) % total;
+                update();
+            };
+
+            const nextSlide = () => go(idx + 1);
+            const prevSlide = () => go(idx - 1);
+
+            next?.addEventListener('click', nextSlide);
+            prev?.addEventListener('click', prevSlide);
+            dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+
+            let timer = setInterval(nextSlide, 6000);
+            container.addEventListener('mouseenter', () => clearInterval(timer));
+            container.addEventListener('mouseleave', () => (timer = setInterval(nextSlide, 6000)));
+
+            update();
         })();
     </script>
     
