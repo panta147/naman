@@ -186,6 +186,10 @@
             box-shadow: none !important;
         }
 
+        /* Hide horizontal scrollbars (keep scrolling) */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
         /* Borders: allow dividers (BBC-style layouts need thin lines) */
         
         /* Optimize font rendering for small screens */
@@ -1370,6 +1374,137 @@
     <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-gray-900 text-white shadow-lg hidden items-center justify-center hover:opacity-90 z-50" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
+
+    <!-- Videos (YouTube) - before footer -->
+    <section aria-label="Latest Videos" class="mt-12">
+        <div class="bg-gradient-to-br from-gray-900 via-slate-900 to-indigo-900 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div class="flex items-end justify-between gap-4">
+                    <div>
+                        <div class="inline-flex items-center gap-2 text-xs font-extrabold tracking-widest uppercase text-white/80">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                            Video Highlights
+                        </div>
+                        <h2 class="mt-2 text-2xl md:text-3xl font-extrabold leading-tight">भिडियो समाचार</h2>
+                        <p class="mt-1 text-sm text-white/75 max-w-2xl">५ वटा स्क्रोल गर्न मिल्ने भिडियोहरू — क्लिक गर्दा तुरुन्तै प्ले हुन्छ।</p>
+                    </div>
+                    <div class="hidden sm:flex items-center gap-2">
+                        <button id="videoPrev" class="w-10 h-10 bg-white/10 hover:bg-white/15 backdrop-blur" aria-label="Scroll videos left">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button id="videoNext" class="w-10 h-10 bg-white/10 hover:bg-white/15 backdrop-blur" aria-label="Scroll videos right">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mt-6 relative">
+                    <div id="videoRail" class="no-scrollbar flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2">
+                        <!-- Use your own YouTube IDs (data-video) -->
+                        <button class="video-card min-w-[280px] sm:min-w-[320px] md:min-w-[360px] snap-start text-left" data-video="dQw4w9WgXcQ" aria-label="Play video 1">
+                            <div class="relative overflow-hidden bg-white/10">
+                                <img class="w-full h-48 object-cover opacity-95" alt="YouTube video thumbnail" loading="lazy" decoding="async" src="https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent"></div>
+                                <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-3">
+                                    <div>
+                                        <div class="text-xs text-white/80">नमन खबर · भिडियो</div>
+                                        <div class="mt-1 font-extrabold leading-snug">मुख्य भिडियो शीर्षक — १</div>
+                                    </div>
+                                    <div class="w-11 h-11 bg-red-600/95 flex items-center justify-center">
+                                        <i class="fas fa-play text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="absolute top-3 left-3 text-[11px] font-bold bg-black/50 px-2 py-1">LIVE/HD</div>
+                            </div>
+                        </button>
+
+                        <button class="video-card min-w-[280px] sm:min-w-[320px] md:min-w-[360px] snap-start text-left" data-video="M7lc1UVf-VE" aria-label="Play video 2">
+                            <div class="relative overflow-hidden bg-white/10">
+                                <img class="w-full h-48 object-cover opacity-95" alt="YouTube video thumbnail" loading="lazy" decoding="async" src="https://i.ytimg.com/vi/M7lc1UVf-VE/hqdefault.jpg">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent"></div>
+                                <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-3">
+                                    <div>
+                                        <div class="text-xs text-white/80">नमन खबर · भिडियो</div>
+                                        <div class="mt-1 font-extrabold leading-snug">मुख्य भिडियो शीर्षक — २</div>
+                                    </div>
+                                    <div class="w-11 h-11 bg-red-600/95 flex items-center justify-center">
+                                        <i class="fas fa-play text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="absolute top-3 left-3 text-[11px] font-bold bg-black/50 px-2 py-1">03:24</div>
+                            </div>
+                        </button>
+
+                        <button class="video-card min-w-[280px] sm:min-w-[320px] md:min-w-[360px] snap-start text-left" data-video="ysz5S6PUM-U" aria-label="Play video 3">
+                            <div class="relative overflow-hidden bg-white/10">
+                                <img class="w-full h-48 object-cover opacity-95" alt="YouTube video thumbnail" loading="lazy" decoding="async" src="https://i.ytimg.com/vi/ysz5S6PUM-U/hqdefault.jpg">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent"></div>
+                                <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-3">
+                                    <div>
+                                        <div class="text-xs text-white/80">नमन खबर · भिडियो</div>
+                                        <div class="mt-1 font-extrabold leading-snug">मुख्य भिडियो शीर्षक — ३</div>
+                                    </div>
+                                    <div class="w-11 h-11 bg-red-600/95 flex items-center justify-center">
+                                        <i class="fas fa-play text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="absolute top-3 left-3 text-[11px] font-bold bg-black/50 px-2 py-1">05:10</div>
+                            </div>
+                        </button>
+
+                        <button class="video-card min-w-[280px] sm:min-w-[320px] md:min-w-[360px] snap-start text-left" data-video="aqz-KE-bpKQ" aria-label="Play video 4">
+                            <div class="relative overflow-hidden bg-white/10">
+                                <img class="w-full h-48 object-cover opacity-95" alt="YouTube video thumbnail" loading="lazy" decoding="async" src="https://i.ytimg.com/vi/aqz-KE-bpKQ/hqdefault.jpg">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent"></div>
+                                <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-3">
+                                    <div>
+                                        <div class="text-xs text-white/80">नमन खबर · भिडियो</div>
+                                        <div class="mt-1 font-extrabold leading-snug">मुख्य भिडियो शीर्षक — ४</div>
+                                    </div>
+                                    <div class="w-11 h-11 bg-red-600/95 flex items-center justify-center">
+                                        <i class="fas fa-play text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="absolute top-3 left-3 text-[11px] font-bold bg-black/50 px-2 py-1">10:00</div>
+                            </div>
+                        </button>
+
+                        <button class="video-card min-w-[280px] sm:min-w-[320px] md:min-w-[360px] snap-start text-left" data-video="ScMzIvxBSi4" aria-label="Play video 5">
+                            <div class="relative overflow-hidden bg-white/10">
+                                <img class="w-full h-48 object-cover opacity-95" alt="YouTube video thumbnail" loading="lazy" decoding="async" src="https://i.ytimg.com/vi/ScMzIvxBSi4/hqdefault.jpg">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent"></div>
+                                <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-3">
+                                    <div>
+                                        <div class="text-xs text-white/80">नमन खबर · भिडियो</div>
+                                        <div class="mt-1 font-extrabold leading-snug">मुख्य भिडियो शीर्षक — ५</div>
+                                    </div>
+                                    <div class="w-11 h-11 bg-red-600/95 flex items-center justify-center">
+                                        <i class="fas fa-play text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="absolute top-3 left-3 text-[11px] font-bold bg-black/50 px-2 py-1">08:45</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="fixed inset-0 bg-black/75 hidden items-center justify-center p-4 z-[999]" role="dialog" aria-modal="true" aria-label="Video player">
+        <div class="w-full max-w-4xl">
+            <div class="flex justify-end mb-3">
+                <button id="videoClose" class="w-10 h-10 bg-white/10 hover:bg-white/15 text-white" aria-label="Close video">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="relative w-full overflow-hidden bg-black" style="aspect-ratio: 16/9;">
+                <iframe id="videoFrame" class="absolute inset-0 w-full h-full" src="" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
     
     <!-- Footer -->
     <footer class="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
@@ -1947,6 +2082,48 @@
             const amt = () => Math.max(280, Math.round(rail.getBoundingClientRect().width * 0.6));
             prev.addEventListener('click', () => rail.scrollBy({ left: -amt(), behavior: 'smooth' }));
             next.addEventListener('click', () => rail.scrollBy({ left: amt(), behavior: 'smooth' }));
+        })();
+
+        // Videos rail + modal player
+        (function () {
+            const rail = document.getElementById('videoRail');
+            const prev = document.getElementById('videoPrev');
+            const next = document.getElementById('videoNext');
+            const modal = document.getElementById('videoModal');
+            const closeBtn = document.getElementById('videoClose');
+            const frame = document.getElementById('videoFrame');
+            if (!rail || !modal || !frame) return;
+
+            const amt = () => Math.max(360, Math.round(rail.getBoundingClientRect().width * 0.85));
+            prev?.addEventListener('click', () => rail.scrollBy({ left: -amt(), behavior: 'smooth' }));
+            next?.addEventListener('click', () => rail.scrollBy({ left: amt(), behavior: 'smooth' }));
+
+            const open = (id) => {
+                if (!id) return;
+                frame.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const close = () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                frame.src = '';
+                document.body.style.overflow = '';
+            };
+
+            rail.querySelectorAll('.video-card').forEach((btn) => {
+                btn.addEventListener('click', () => open(btn.getAttribute('data-video')));
+            });
+
+            closeBtn?.addEventListener('click', close);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) close();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('flex')) close();
+            });
         })();
 
 
