@@ -110,6 +110,8 @@
                             <span><i class="far fa-clock mr-1"></i>Mar 18, 2026</span>
                             <span>•</span>
                             <span><i class="far fa-eye mr-1"></i>12,340</span>
+                            <span>•</span>
+                            <span><i class="far fa-hourglass mr-1"></i><span id="readingTime">—</span> min read</span>
                         </div>
                         <div class="bbc-divider"></div>
                     </header>
@@ -135,6 +137,13 @@
                         <a href="#" class="w-10 h-10 grid place-items-center bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="w-10 h-10 grid place-items-center bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="w-10 h-10 grid place-items-center bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <button id="copyLinkBtn" class="w-10 h-10 grid place-items-center bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Copy link">
+                            <i class="fas fa-link"></i>
+                        </button>
+                        <button id="ttsBtn" class="w-10 h-10 grid place-items-center bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Listen to article">
+                            <i id="ttsIcon" class="fas fa-volume-up"></i>
+                        </button>
+                        <span id="shareToast" class="hidden text-xs font-semibold text-green-600 dark:text-green-400">Copied!</span>
                     </div>
 
                     <!-- Recommended news -->
@@ -304,10 +313,15 @@
         (function () {
             const progress = document.getElementById('readingProgress');
             const article = document.querySelector('article');
+            const readingTimeEl = document.getElementById('readingTime');
             const plus = document.getElementById('fontPlus');
             const minus = document.getElementById('fontMinus');
             const bookmarkBtn = document.getElementById('bookmarkBtn');
             const bookmarkIcon = document.getElementById('bookmarkIcon');
+            const copyBtn = document.getElementById('copyLinkBtn');
+            const toast = document.getElementById('shareToast');
+            const ttsBtn = document.getElementById('ttsBtn');
+            const ttsIcon = document.getElementById('ttsIcon');
 
             // Progress
             const onScroll = () => {
@@ -320,6 +334,14 @@
             };
             window.addEventListener('scroll', onScroll, { passive: true });
             onScroll();
+
+            // Reading time estimate (~200 wpm)
+            if (readingTimeEl && article) {
+                const text = article.innerText || '';
+                const words = text.trim().split(/\s+/).filter(Boolean).length;
+                const mins = Math.max(1, Math.round(words / 200));
+                readingTimeEl.textContent = String(mins);
+            }
 
             // Font size (stored)
             const key = 'reader_font_px';
@@ -354,6 +376,58 @@
                 setSaved(savedSet);
                 updateBookmark();
             });
+
+            // Copy link
+            const showToast = (msg) => {
+                if (!toast) return;
+                toast.textContent = msg;
+                toast.classList.remove('hidden');
+                clearTimeout(showToast._t);
+                showToast._t = setTimeout(() => toast.classList.add('hidden'), 1800);
+            };
+            if (copyBtn) {
+                copyBtn.addEventListener('click', async () => {
+                    try {
+                        await navigator.clipboard.writeText(window.location.href);
+                        showToast('Copied!');
+                    } catch {
+                        showToast('Copy failed');
+                    }
+                });
+            }
+
+            // Text-to-speech (Nepali if available, else default)
+            let speaking = false;
+            let utter = null;
+            const pickVoice = () => {
+                const voices = window.speechSynthesis?.getVoices?.() || [];
+                return voices.find(v => (v.lang || '').toLowerCase().startsWith('ne')) || voices[0];
+            };
+            const stopTTS = () => {
+                speaking = false;
+                try { window.speechSynthesis.cancel(); } catch {}
+                if (ttsIcon) ttsIcon.className = 'fas fa-volume-up';
+            };
+            const startTTS = () => {
+                if (!window.speechSynthesis || !article) return showToast('TTS not supported');
+                const txt = (article.innerText || '').trim();
+                if (!txt) return;
+                speaking = true;
+                utter = new SpeechSynthesisUtterance(txt);
+                const v = pickVoice();
+                if (v) utter.voice = v;
+                utter.onend = stopTTS;
+                utter.onerror = stopTTS;
+                if (ttsIcon) ttsIcon.className = 'fas fa-stop';
+                window.speechSynthesis.speak(utter);
+            };
+            if (ttsBtn) {
+                ttsBtn.addEventListener('click', () => {
+                    if (speaking) stopTTS();
+                    else startTTS();
+                });
+                window.addEventListener('beforeunload', stopTTS);
+            }
         })();
 
         document.getElementById('year').textContent = new Date().getFullYear();

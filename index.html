@@ -604,6 +604,36 @@
         </div>
     </section>
 
+    <!-- Trending Topics -->
+    <section aria-label="Trending Topics" class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2 flex-shrink-0">
+                    <i class="fas fa-fire text-orange-500"></i>
+                    <span class="text-sm font-extrabold uppercase tracking-wide">Trending</span>
+                </div>
+                <div class="relative flex-1">
+                    <div id="trendingRail" class="flex items-center gap-2 overflow-x-auto scroll-smooth whitespace-nowrap" style="scrollbar-width: none;">
+                        <a href="category.html" class="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-sm font-semibold hover:opacity-80">#राजनीति</a>
+                        <a href="category.html" class="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-sm font-semibold hover:opacity-80">#खेलकुद</a>
+                        <a href="category.html" class="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-sm font-semibold hover:opacity-80">#प्रविधि</a>
+                        <a href="category.html" class="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-sm font-semibold hover:opacity-80">#व्यापार</a>
+                        <a href="category.html" class="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-sm font-semibold hover:opacity-80">#अन्तर्राष्ट्रिय</a>
+                        <a href="category.html" class="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-sm font-semibold hover:opacity-80">#मनोरञ्जन</a>
+                    </div>
+                </div>
+                <div class="hidden sm:flex items-center gap-2">
+                    <button id="trendingPrev" class="w-9 h-9 bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Scroll trending left">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="trendingNext" class="w-9 h-9 bg-gray-100 dark:bg-gray-800 hover:opacity-80" aria-label="Scroll trending right">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Main Content Area -->
     <main class="pt-16 md:pt-20 min-h-screen pb-20" lang="ne">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
@@ -1837,6 +1867,17 @@
             window.addEventListener('scroll', onScroll, { passive: true });
             onScroll();
             btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        })();
+
+        // Trending topics rail controls
+        (function () {
+            const rail = document.getElementById('trendingRail');
+            const prev = document.getElementById('trendingPrev');
+            const next = document.getElementById('trendingNext');
+            if (!rail || !prev || !next) return;
+            const amt = () => Math.max(280, Math.round(rail.getBoundingClientRect().width * 0.6));
+            prev.addEventListener('click', () => rail.scrollBy({ left: -amt(), behavior: 'smooth' }));
+            next.addEventListener('click', () => rail.scrollBy({ left: amt(), behavior: 'smooth' }));
         })();
 
 
