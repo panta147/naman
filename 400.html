@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ne" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>400 Bad Request | नमन खबर</title>
+    <meta name="description" content="400 Bad Request — तपाईंको अनुरोध बुझ्न सकेनौं।">
+    <meta name="robots" content="noindex, nofollow">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        (function () {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+        })();
+    </script>
+
+    <style>
+        * { font-family: 'Mukta', 'Noto Sans Devanagari', 'Arial Unicode MS', sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+        *:focus { outline: none !important; box-shadow: none !important; }
+        [lang="ne"], .nepali-text { font-feature-settings: "kern" 1, "liga" 1; text-rendering: optimizeLegibility; line-height: 1.95; }
+        body { font-size: 17px; line-height: 1.9; letter-spacing: 0; }
+        .dark body { color: #f3f4f6; }
+        .bbc-divider { height: 1px; background: rgba(17, 24, 39, 0.18); }
+        .dark .bbc-divider { background: rgba(243, 244, 246, 0.18); }
+    </style>
+</head>
+
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="assets/logo-512.png" alt="नमन खबर" class="w-10 h-10 object-contain" loading="eager" decoding="async">
+                    <div class="leading-tight">
+                        <div class="text-xl md:text-2xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                            नमन खबर
+                        </div>
+                        <div class="text-[11px] text-gray-500 dark:text-gray-400 -mt-1">Namankhabar</div>
+                    </div>
+                </a>
+
+                <div class="hidden lg:flex items-center gap-2">
+                    <a href="index.html" class="px-3 py-2 text-sm font-semibold hover:opacity-80">गृहपृष्ठ</a>
+                    <a href="category.html" class="px-3 py-2 text-sm font-semibold hover:opacity-80">श्रेणी</a>
+                    <a href="about.html" class="px-3 py-2 text-sm font-semibold hover:opacity-80">हाम्रो बारेमा</a>
+                    <a href="contact.html" class="px-3 py-2 text-sm font-extrabold hover:opacity-80">सम्पर्क</a>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <button id="themeToggle" class="w-10 h-10 rounded-full grid place-items-center hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Toggle theme">
+                        <i id="themeIcon" class="fas fa-moon text-gray-700 dark:text-gray-300"></i>
+                    </button>
+                    <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 rounded-full grid place-items-center hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Toggle menu">
+                        <i id="menuIcon" class="fas fa-bars text-gray-700 dark:text-gray-300 text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="lg:hidden hidden bg-white dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-2">
+                <a href="index.html" class="block px-3 py-2 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">गृहपृष्ठ</a>
+                <a href="category.html" class="block px-3 py-2 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">श्रेणी</a>
+                <a href="about.html" class="block px-3 py-2 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">हाम्रो बारेमा</a>
+                <a href="contact.html" class="block px-3 py-2 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">सम्पर्क</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-20 md:pt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <div class="lg:col-span-5">
+                    <div class="bg-gray-100 dark:bg-gray-800 p-8 md:p-10">
+                        <div class="text-sm font-extrabold uppercase tracking-wide text-gray-600 dark:text-gray-300">Error</div>
+                        <div class="mt-4 text-6xl md:text-7xl font-extrabold text-gray-900 dark:text-gray-100">400</div>
+                        <p class="mt-3 text-gray-700 dark:text-gray-300 text-sm md:text-base">
+                            Bad Request: तपाईंको अनुरोध ठीक तरिकाले बुझ्न सकिएन।
+                        </p>
+                        <div class="mt-7 h-[220px] bg-white/60 dark:bg-gray-900/40 overflow-hidden">
+                            <img class="w-full h-full object-cover" alt="400 placeholder illustration"
+                                src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1200'%20height='600'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20stop-color='%23111827'/%3E%3Cstop%20offset='1'%20stop-color='%23f97316'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='1200'%20height='600'%20fill='url(%23g)'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='52'%20fill='white'%20opacity='0.95'%3E400%20Bad%20Request%3C/text%3E%3C/svg%3E">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+                        तपाईंको अनुरोध पूरा हुन सकेन
+                    </h1>
+                    <p class="mt-4 text-gray-700 dark:text-gray-300 text-sm md:text-base">
+                        URL/फारम डाटा जाँच्नुहोस्, वा गृहपृष्ठबाट सुरु गर्नुहोस्।
+                    </p>
+
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <a href="index.html" class="px-6 py-3 bg-gray-900 text-white font-extrabold hover:opacity-90">
+                            गृहपृष्ठमा फर्किनुहोस्
+                        </a>
+                        <a href="contact.html" class="px-6 py-3 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-extrabold hover:opacity-90">
+                            समस्या रिपोर्ट गर्नुहोस्
+                        </a>
+                    </div>
+
+                    <div class="mt-8 bbc-divider"></div>
+
+                    <div class="mt-6">
+                        <div class="text-sm font-extrabold uppercase tracking-wide text-gray-600 dark:text-gray-300">Popular Sections</div>
+                        <div class="mt-3 flex flex-wrap gap-3">
+                            <a href="category.html" class="px-4 py-2 bg-gray-100 dark:bg-gray-800 font-semibold hover:opacity-80">राजनीति</a>
+                            <a href="category.html" class="px-4 py-2 bg-gray-100 dark:bg-gray-800 font-semibold hover:opacity-80">खेलकुद</a>
+                            <a href="category.html" class="px-4 py-2 bg-gray-100 dark:bg-gray-800 font-semibold hover:opacity-80">प्रविधि</a>
+                            <a href="category.html" class="px-4 py-2 bg-gray-100 dark:bg-gray-800 font-semibold hover:opacity-80">मनोरञ्जन</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-50 dark:bg-gray-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+                <div>
+                    <div class="font-extrabold text-xl">नमन खबर</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">नेपालको विश्वसनीय समाचार स्रोत</div>
+                </div>
+                <div class="flex flex-wrap gap-4 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <a href="about.html" class="hover:opacity-80">हाम्रो बारेमा</a>
+                    <a href="contact.html" class="hover:opacity-80">सम्पर्क</a>
+                    <a href="#" class="hover:opacity-80">गोपनीयता नीति</a>
+                    <a href="#" class="hover:opacity-80">सर्तहरू</a>
+                </div>
+            </div>
+
+            <div class="bbc-divider mt-8"></div>
+
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                <div class="md:col-span-5">
+                    <div class="text-sm font-extrabold uppercase tracking-wide text-gray-600 dark:text-gray-300">Newsletter</div>
+                    <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">नयाँ समाचार अपडेटहरू तपाईंको इमेलमा पाउनुहोस्।</p>
+                </div>
+                <div class="md:col-span-7">
+                    <form id="newsletterForm" class="flex flex-col sm:flex-row gap-3 sm:items-center">
+                        <input type="email" required placeholder="तपाईंको इमेल" class="flex-1 px-4 py-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100" />
+                        <button type="submit" class="px-6 py-3 bg-gray-900 text-white font-extrabold hover:opacity-90">
+                            सदस्यता लिनुहोस्
+                        </button>
+                    </form>
+                    <p id="newsletterSuccess" class="hidden mt-3 text-sm font-semibold text-green-600 dark:text-green-400">धन्यवाद! हामीले तपाईंको इमेल टिपेका छौं।</p>
+                </div>
+            </div>
+
+            <div class="mt-8 text-xs text-gray-600 dark:text-gray-400">&copy; <span id="year"></span> Namankhabar. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        tailwind.config = { darkMode: 'class' };
+
+        (function () {
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+
+            const updateThemeIcon = () => {
+                if (!themeIcon) return;
+                const isDark = html.classList.contains('dark');
+                themeIcon.classList.toggle('fa-moon', !isDark);
+                themeIcon.classList.toggle('fa-sun', isDark);
+            };
+
+            updateThemeIcon();
+
+            themeToggle?.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+                updateThemeIcon();
+            });
+
+            mobileMenuBtn?.addEventListener('click', () => {
+                mobileMenu?.classList.toggle('hidden');
+                menuIcon?.classList.toggle('fa-bars');
+                menuIcon?.classList.toggle('fa-times');
+            });
+
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            const newsletterForm = document.getElementById('newsletterForm');
+            const newsletterSuccess = document.getElementById('newsletterSuccess');
+            newsletterForm?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (newsletterSuccess) {
+                    newsletterSuccess.classList.remove('hidden');
+                    newsletterForm.reset();
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
+

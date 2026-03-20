@@ -20,12 +20,33 @@
     </script>
 
     <style>
-        *{font-family:'Mukta','Noto Sans Devanagari','Arial Unicode MS',sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-        body{font-size:17px;line-height:1.9;letter-spacing:0}
+        /* Nepali-friendly typography (comfort + readability) */
+        *{
+            font-family:'Mukta','Noto Sans Devanagari','Arial Unicode MS',sans-serif;
+            letter-spacing:0;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+        }
+
+        [lang="ne"], .nepali-text{
+            font-feature-settings: "kern" 1, "liga" 1;
+            text-rendering: optimizeLegibility;
+            line-height: 1.95;
+        }
+
+        body{font-size:16px;line-height:1.95;letter-spacing:0}
         .dark body{color:#f3f4f6}
+
         *:focus{outline:none!important;box-shadow:none!important}
         .bbc-divider{height:1px;background:rgba(17,24,39,.18)}
         .dark .bbc-divider{background:rgba(243,244,246,.18)}
+
+        /* Improve wrapping for long Nepali words/phrases */
+        p, li, a, button { word-break: normal; overflow-wrap: anywhere; }
+
+        @media (max-width: 640px) {
+            body{font-size:15px;line-height:1.9}
+        }
     </style>
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
@@ -35,9 +56,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 md:h-20">
                 <a href="index.html" class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 grid place-items-center text-white">
-                        <i class="fas fa-newspaper"></i>
-                    </div>
+                    <img src="assets/logo-512.png" alt="नमन खबर" class="w-10 h-10 rounded-lg object-contain" loading="eager" decoding="async">
                     <div class="leading-tight">
                         <div class="text-xl md:text-2xl font-extrabold">नमन खबर</div>
                         <div class="text-[11px] text-gray-500 dark:text-gray-400 -mt-1">Namankhabar</div>
@@ -80,6 +99,12 @@
                     <span class="mx-2">/</span>
                     <span class="font-semibold text-gray-900 dark:text-gray-100">राजनीति</span>
                 </div>
+                <div class="text-center">
+                    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">राजनीति</h1>
+                    <p class="mt-2 text-base md:text-lg text-gray-700 dark:text-gray-300">
+                        राजनीति सम्बन्धी ताजा समाचार, विश्लेषण र अपडेटहरू।
+                    </p>
+                </div>
                 <div class="bbc-divider"></div>
             </section>
 
@@ -88,8 +113,8 @@
                 <article class="lg:col-span-8">
                     <a href="singlepost.html" class="block">
                         <img class="w-full h-[240px] sm:h-[340px] md:h-[420px] object-cover" alt="Category featured placeholder" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1200'%20height='700'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20stop-color='%23111827'/%3E%3Cstop%20offset='1'%20stop-color='%233b82f6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='1200'%20height='700'%20fill='url(%23g)'/%3E%3Ctext%20x='50%25'%20y='50%25'%20text-anchor='middle'%20dominant-baseline='middle'%20font-family='Mukta,%20Arial'%20font-size='30'%20fill='white'%20opacity='0.95'%3EFeatured%20News%20%7C%201200%20%C3%97%20700%3C/text%3E%3C/svg%3E">
-                        <h2 class="mt-4 text-2xl md:text-3xl font-extrabold leading-tight">श्रेणीको मुख्य समाचार शीर्षक यहाँ</h2>
-                        <p class="mt-2 text-gray-700 dark:text-gray-300 text-sm md:text-base">यो ठाउँमा समाचारको छोटो सारांश (२–३ लाइन) राख्नुहोस् ताकि पाठकले छिटो बुझोस्।</p>
+                        <h2 class="mt-4 text-2xl md:text-4xl font-extrabold leading-tight">श्रेणीको मुख्य समाचार शीर्षक यहाँ</h2>
+                        <p class="mt-3 text-gray-700 dark:text-gray-300 text-sm md:text-base">यो ठाउँमा समाचारको छोटो सारांश (२–३ लाइन) राख्नुहोस् ताकि पाठकले छिटो बुझोस्।</p>
                         <div class="mt-3 text-xs text-gray-600 dark:text-gray-400">२ घण्टा अघि · काठमाडौं</div>
                     </a>
                 </article>
@@ -112,7 +137,7 @@
             <!-- Category feed grid -->
             <section class="mt-10">
                 <div class="flex items-center justify-between">
-                    <h2 class="text-base md:text-lg font-extrabold uppercase tracking-wide">ताजा समाचार</h2>
+                    <h2 class="text-lg md:text-2xl font-extrabold tracking-wide">ताजा समाचार</h2>
                     <div class="text-sm text-gray-600 dark:text-gray-300">कुल: <span id="newsCount" class="font-extrabold">8</span></div>
                 </div>
                 <div class="bbc-divider mt-3"></div>
